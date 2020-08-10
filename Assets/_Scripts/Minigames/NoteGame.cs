@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Displayer : MonoBehaviour
+public class NoteGame : MonoBehaviour
 {
    private int notesEntered = 0;
    private int[] notes = new int[4];
