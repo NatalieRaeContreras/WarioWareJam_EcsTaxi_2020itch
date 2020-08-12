@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4920380385340799590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4920380385340799610}
+  - component: {fileID: 4920380385340799609}
+  - component: {fileID: 4920380385340799608}
+  - component: {fileID: 4920380385340799591}
+  - component: {fileID: 4920380385340799611}
+  - component: {fileID: 2279098258703008154}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4920380385340799610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920380385340799590}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5765978, y: 0.13576238, z: -1.4287109}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &4920380385340799609
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920380385340799590}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 957c06a565dab0a429778ae53d1514f8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4920380385340799608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920380385340799590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4868100198bd6b4cab7f77eb790e078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggers: 
+  state: {fileID: 4920380385340799609}
+  current: 0
+  prev: 0
+  miniResult: 0
+  timeInState: 0
+--- !u!114 &4920380385340799591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920380385340799590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42931b46c34591442b378e5a4cef4699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  timer: {fileID: 0}
+  anim: {fileID: 0}
+  miniRender: {fileID: 8400000, guid: 054718ecb6fb90f4d85f97b76ed2e0e8, type: 2}
+  preGameLatch: 0
+  preMinigameLatch: 0
+  isGameOver: 0
+  isRestart: 0
+  scene:
+    m_Handle: 0
+  nextMinigame: 
+--- !u!114 &4920380385340799611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920380385340799590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d6f723681d041468eeafc2a69de1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  imageRenderer: {fileID: 0}
+  frames:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 5019887300146612264, guid: bd5e5f5a931e42646aa025ae7f03d6bc, type: 3}
+  - {fileID: 4744435311465695756, guid: bd5e5f5a931e42646aa025ae7f03d6bc, type: 3}
+  - {fileID: 7192586053234114878, guid: bd5e5f5a931e42646aa025ae7f03d6bc, type: 3}
+  - {fileID: -1362516851955993900, guid: bd5e5f5a931e42646aa025ae7f03d6bc, type: 3}
+--- !u!114 &2279098258703008154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920380385340799590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0679b76159de6084eadabccb6c641792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miniSceneName:
+  - Scenes/Games/Notegame
+  - Scenes/Games/HedgeTrimmer
+  miniMaxTime: 0400000005000000
+  miniVerb:
+  - {fileID: -4898950237445168155, guid: deb412acc72217f49b163e86779ee80b, type: 3}
+  - {fileID: 4506567294231500064, guid: deb412acc72217f49b163e86779ee80b, type: 3}

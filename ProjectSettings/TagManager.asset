@@ -4,12 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ActorGood
-  - ActorBad
-  - ObjectiveGood
-  - ObjectiveBad
-  - EnemyGood
-  - EnemyBad
+  - CanvasTimer
+  - CanvasRenderer
+  - CanvasVerb
+  - CanvasMiniStateUI
+  - AnimManager
+  - CanvasMaster
+  - CanvasCountdown
+  - MinigameBG
+  - DestructibleProp
   layers:
   - Default
   - TransparentFX
