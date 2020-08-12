@@ -40,6 +40,10 @@ public class GameVars : Singleton<GameVars>
       if (anim == null)
       {
          anim = GameObject.FindGameObjectWithTag("AnimManager").GetComponent<AssetAnimator>();
+         if (anim == null)
+         {
+            Debug.LogError("Good job ya loon");
+         }
       }
       anim.Init();
    }
