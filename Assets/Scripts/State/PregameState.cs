@@ -9,13 +9,10 @@ public class PregameState : StateMachineBehaviour
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      if (GameVars.Instance.isRestart)
-      {
-         GameVars.Instance.BroadcastMessage("Awake", SendMessageOptions.RequireReceiver);
-         GameVars.Instance.BroadcastMessage("Start", SendMessageOptions.RequireReceiver);
-         GameState.Instance.BroadcastMessage("Awake", SendMessageOptions.RequireReceiver);
-         GameState.Instance.BroadcastMessage("Start", SendMessageOptions.RequireReceiver);
-      }
+      GameVars.Instance.BroadcastMessage("Awake", SendMessageOptions.RequireReceiver);
+      GameVars.Instance.BroadcastMessage("Start", SendMessageOptions.RequireReceiver);
+      GameState.Instance.BroadcastMessage("Awake", SendMessageOptions.RequireReceiver);
+      GameState.Instance.BroadcastMessage("Start", SendMessageOptions.RequireReceiver);
       GameVars.Instance.Init();
       GameState.Instance.Init();
 
@@ -35,6 +32,7 @@ public class PregameState : StateMachineBehaviour
          GameVars.Instance.anim.DisplayGameVerb(GameVars.Instance.nextMinigame);
          GameState.Instance.state.SetTrigger("Ready");
          GameVars.Instance.preMinigameLatch = false;
+         GameVars.Instance.preGameLatch = false;
       }
       else if (GameState.Instance.timeInState >= 4.0f && !GameVars.Instance.preMinigameLatch)
       {
