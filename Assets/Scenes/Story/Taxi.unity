@@ -753,7 +753,9 @@ MonoBehaviour:
   timeLimit: 5
   timeToDisplayTimer: 3
   hourglassRenderer: {fileID: 7991467703119585013}
+  hourglassAnimator: {fileID: 0}
   countdownRenderer: {fileID: 298341892}
+  countdownAnimator: {fileID: 0}
 --- !u!1 &7586192773596664797
 GameObject:
   m_ObjectHideFlags: 0
