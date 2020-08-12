@@ -134,6 +134,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 882b6d5fdcc35744996528d2dcf9317f,
         type: 3}
+    - target: {fileID: 2279098258703008154, guid: e3ddcd7e902244048b0282da2c5bc440,
+        type: 3}
+      propertyPath: miniMaxTime.Array.data[1]
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4920380385340799590, guid: e3ddcd7e902244048b0282da2c5bc440,
         type: 3}
       propertyPath: m_Name
