@@ -24,6 +24,7 @@ public class MinigameWinState : StateMachineBehaviour
    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
       GameVars.Instance.timer.Reset();
+      GameVars.Instance.timer.Hide();
       GameVars.Instance.anim.ResultAnim(true);
       GameState.Instance.state.SetTrigger("Win");
    }

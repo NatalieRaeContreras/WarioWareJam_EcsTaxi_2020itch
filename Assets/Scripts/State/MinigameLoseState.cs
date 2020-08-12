@@ -24,6 +24,7 @@ public class MinigameLoseState : StateMachineBehaviour
    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
       GameVars.Instance.timer.Reset();
+      GameVars.Instance.timer.Hide();
       GameVars.Instance.health--;
       GameVars.Instance.anim.ResultAnim(false);
       GameState.Instance.state.SetTrigger("Lose");
