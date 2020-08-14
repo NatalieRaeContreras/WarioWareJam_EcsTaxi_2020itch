@@ -8,22 +8,22 @@ public class QuitState : StateMachineBehaviour
    //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      if (GameObject.FindObjectOfType<MinigameManager>()!=null)
-      {
-         Destroy(MinigameManager.Instance);
-      }
+      //if (GameObject.FindObjectOfType<MinigameManager>()!=null)
+      //{
+      //   Destroy(MinigameManager.Instance);
+      //}
 
-      if (GameObject.FindObjectOfType<GameState>() != null)
-      {
-         Destroy(GameState.Instance);
-      }
+      //if (GameObject.FindObjectOfType<GameState>() != null)
+      //{
+      //   Destroy(GameState.Instance);
+      //}
 
-      if (GameObject.FindObjectOfType<GameVars>() != null)
-      {
-         Destroy(GameVars.Instance);
-      }
+      //if (GameObject.FindObjectOfType<GameVars>() != null)
+      //{
+      //   Destroy(GameVars.Instance);
+      //}
 
-      Application.Quit();
+      //Application.Quit();
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

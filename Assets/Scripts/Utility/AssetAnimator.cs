@@ -1,34 +1,62 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AssetAnimator : MonoBehaviour
 {
    public Animator GameBoard;
-   public Image GameVerb;
+   public Animator GameWindow;
+   public Animator Indicator;
    public Animator LoserAnim;
    public Animator WinnerAnim;
+   public Animator verbAnim;
+   public Image GameVerb;
    public SpriteRenderer BG;
    public SpriteRenderer City;
-   public Animator Indicator;
 
-   public List<Animator> PreGame;
    public List<Animator> Lives;
    public List<Animator> LoseLifeIndicator;
+   public List<Animator> PreGame = new List<Animator>();
    public List<Sprite> BGList;
    public List<Sprite> CityList;
 
    private int total = 10;
    private int progress = 0;
-   private Animator verbAnim;
+   private bool pregameLatch = false;
 
-   public void Init()
+   //==========================================================================
+   public void Start()
    {
-      verbAnim = GameVerb.GetComponent<Animator>();
+      Toolbox.Instance.AttachAssetAnimator(this);
    }
 
+   //==========================================================================
+   public void Init()
+   {
+      foreach (GameObject obj in Toolbox.Instance.Canvas.canvasElements)
+      {
+         obj.SetActive(true);
+      }
+
+      Toolbox.Instance.Canvas.canvasElements[0].SetActive(true);
+      Toolbox.Instance.Canvas.canvasElements[1].SetActive(true);
+
+      GameWindow = Toolbox.Instance.Canvas.canvasElements[0].GetComponent<Animator>();
+      GameVerb = Toolbox.Instance.Canvas.canvasElements[1].GetComponent<Image>();
+      verbAnim = Toolbox.Instance.Canvas.canvasElements[1].GetComponent<Animator>();
+
+   }
+
+   //==========================================================================
    public void ActivatePreGame()
    {
+      if (pregameLatch)
+      {
+         return;
+      }
+      Indicator = GameObject.FindGameObjectWithTag("MinigameIndicator").GetComponent<Animator>();
       Indicator.SetInteger("Remaining", total);
       foreach (Animator obj in PreGame)
       {
@@ -36,16 +64,11 @@ public class AssetAnimator : MonoBehaviour
       }
    }
 
-   public void doNothing()
-   {
-   }
-
+   //==========================================================================
    public void ResultAnim(bool success)
    {
       verbAnim.SetTrigger("Reset");
       verbAnim.ResetTrigger("Activate");
-
-      GameVars.Instance.miniRender.DiscardContents();
 
       if (success)
       {
@@ -57,37 +80,44 @@ public class AssetAnimator : MonoBehaviour
       }
    }
 
+   //==========================================================================
+   public void DisplayPregameInfo()
+   {
+      DisplayGameVerb();
+      OpenGameBoard();
+      GameWindow.SetTrigger("Open");
+      GameWindow.ResetTrigger("Close");
+   }
+
+   //==========================================================================
    public void OpenGameBoard()
    {
       GameBoard.SetTrigger("Open");
       GameBoard.ResetTrigger("Close");
    }
 
+   //==========================================================================
    public void CloseGameBoard()
    {
+      GameWindow.SetTrigger("Close");
       GameBoard.SetTrigger("Close");
+      GameWindow.ResetTrigger("Open");
       GameBoard.ResetTrigger("Open");
    }
 
-   public void DisplayGameVerb(string name)
+   //==========================================================================
+   public void DisplayGameVerb()
    {
       WinnerAnim.SetTrigger("Reset");
       LoserAnim.SetTrigger("Reset");
 
-      int index = MinigameManager.Instance.miniSceneName.IndexOf(name);
-      if (index >= 0 && index < MinigameManager.Instance.miniSceneName.Count)
-      {
-         GameVerb.sprite = MinigameManager.Instance.miniVerb[index];
-      }
-      else
-      {
-         Debug.LogError("Holy shit" + name + ":" + index);
-      }
+      GameVerb.sprite = Toolbox.Instance.MiniManager.minigameInfo.verbSprite;
 
       verbAnim.ResetTrigger("Reset");
       verbAnim.SetTrigger("Activate");
    }
 
+   //==========================================================================
    public void GameOver()
    {
       foreach (Animator obj in PreGame)
@@ -97,6 +127,7 @@ public class AssetAnimator : MonoBehaviour
       }
    }
 
+   //==========================================================================
    public void ProgressWorld()
    {
       progress++;
@@ -105,6 +136,7 @@ public class AssetAnimator : MonoBehaviour
       Indicator.SetInteger("Remaining", total - progress);
    }
 
+   //==========================================================================
    private void OnSuccess()
    {
       ProgressWorld();
@@ -112,11 +144,12 @@ public class AssetAnimator : MonoBehaviour
       WinnerAnim.ResetTrigger("Reset");
    }
 
+   //==========================================================================
    private void OnFailure()
    {
       LoserAnim.SetTrigger("Activate");
       LoserAnim.ResetTrigger("Reset");
-      Lives[GameVars.Instance.health].SetTrigger("Death");
-      LoseLifeIndicator[GameVars.Instance.health].SetTrigger("Activate");
+      Lives[Toolbox.Instance.Vars.health].SetTrigger("Death");
+      LoseLifeIndicator[Toolbox.Instance.Vars.health].SetTrigger("Activate");
    }
 }

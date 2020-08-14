@@ -11,15 +11,16 @@ public class GameOverState : StateMachineBehaviour
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      GameState.Instance.ResetTriggers();
-      if (GameVars.Instance.scene.isLoaded && GameVars.Instance.scene.IsValid())
-      {
-         SceneManager.UnloadSceneAsync(GameVars.Instance.scene);
-         GameVars.Instance.nextMinigame = null;
-      }
+      //GameState.Instance.ResetTriggers();
+      //if (GameVars.Instance.scene.isLoaded)
+      //{
+      //   SceneManager.UnloadSceneAsync(GameVars.Instance.scene);
 
-      GameVars.Instance.anim.GameOver();
-      GameVars.Instance.isGameOver = false;
+      //   GameVars.Instance.nextMinigame = null;
+      //}
+
+      //AssetAnimator.Instance.GameOver();
+      //GameVars.Instance.isGameOver = false;
    }
 
    //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -31,14 +32,14 @@ public class GameOverState : StateMachineBehaviour
    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
 
-      if (GameState.Instance.state.GetBool("PlayAgain") == true)
-      {
-         SceneManager.LoadScene(gameString);
-      }
-      else if (GameState.Instance.state.GetBool("ToMain") == true)
-      {
-         SceneManager.LoadScene(mainMenuString);
-      }
+      //if (GameState.Instance.state.GetBool("PlayAgain") == true)
+      //{
+      //   SceneManager.LoadScene(gameString);
+      //}
+      //else if (GameState.Instance.state.GetBool("ToMain") == true)
+      //{
+      //   SceneManager.LoadScene(mainMenuString);
+      //}
    }
 
    // OnStateMove is called right after Animator.OnAnimatorMove()

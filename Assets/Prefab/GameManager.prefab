@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4920380385340799610}
+  - component: {fileID: 5258135803118899674}
   - component: {fileID: 4920380385340799609}
   - component: {fileID: 4920380385340799608}
-  - component: {fileID: 4920380385340799591}
   - component: {fileID: 4920380385340799611}
   - component: {fileID: 2279098258703008154}
   m_Layer: 0
@@ -35,6 +35,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5258135803118899674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920380385340799590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32923f444ba032e4182cdca68f911ccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _state: {fileID: 4920380385340799608}
+  _miniMan: {fileID: 2279098258703008154}
+  _anim: {fileID: 0}
+  _canvas: {fileID: 0}
 --- !u!95 &4920380385340799609
 Animator:
   serializedVersion: 3
@@ -66,35 +82,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4868100198bd6b4cab7f77eb790e078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggers: 
-  state: {fileID: 4920380385340799609}
   current: 0
   prev: 0
-  miniResult: 0
-  timeInState: 0
---- !u!114 &4920380385340799591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4920380385340799590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42931b46c34591442b378e5a4cef4699, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  timer: {fileID: 0}
-  anim: {fileID: 0}
-  miniRender: {fileID: 8400000, guid: 054718ecb6fb90f4d85f97b76ed2e0e8, type: 2}
-  preGameLatch: 0
-  preMinigameLatch: 0
-  isGameOver: 0
-  isRestart: 0
-  scene:
-    m_Handle: 0
-  nextMinigame: 
+  stateAnim: {fileID: 4920380385340799609}
 --- !u!114 &4920380385340799611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,14 +98,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  imageRenderer: {fileID: 0}
-  frames:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 5019887300146612264, guid: bd5e5f5a931e42646aa025ae7f03d6bc, type: 3}
-  - {fileID: 4744435311465695756, guid: bd5e5f5a931e42646aa025ae7f03d6bc, type: 3}
-  - {fileID: 7192586053234114878, guid: bd5e5f5a931e42646aa025ae7f03d6bc, type: 3}
-  - {fileID: -1362516851955993900, guid: bd5e5f5a931e42646aa025ae7f03d6bc, type: 3}
+  timeLimit: 6
+  timeToDisplayTimer: 3.2
+  hourglassRenderer: {fileID: 0}
+  hourglassAnimator: {fileID: 0}
+  countdownRenderer: {fileID: 0}
+  countdownAnimator: {fileID: 0}
 --- !u!114 &2279098258703008154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,10 +116,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0679b76159de6084eadabccb6c641792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minigameScript: {fileID: 0}
+  minigameLoaded: 0
+  canvas: {fileID: 0}
+  result: 0
+  timer: {fileID: 4920380385340799611}
+  scene:
+    m_Handle: 0
   miniSceneName:
   - Scenes/Games/Notegame
   - Scenes/Games/HedgeTrimmer
-  miniMaxTime: 0400000005000000
+  miniMaxTime: 0400000006000000
   miniVerb:
   - {fileID: -4898950237445168155, guid: deb412acc72217f49b163e86779ee80b, type: 3}
-  - {fileID: 4506567294231500064, guid: deb412acc72217f49b163e86779ee80b, type: 3}
+  - {fileID: 21300000, guid: 882b6d5fdcc35744996528d2dcf9317f, type: 3}

@@ -3,14 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class MinigameInformation
 {
-   public int timeLimit;
    public string sceneName;
-   public Sprite verbName;
+   public int timeLimit;
+   public Sprite verbSprite;
 
-   public MinigameInformation(int time, string scene, Sprite verb)
+   public MinigameInformation(string scene, int time, Sprite verb)
    {
-      timeLimit = time;
       sceneName = scene;
-      verbName = verb;
+      timeLimit = time;
+      verbSprite = verb;
    }
 }

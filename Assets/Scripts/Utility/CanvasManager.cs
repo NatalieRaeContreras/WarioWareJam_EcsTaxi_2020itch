@@ -1,17 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class CanvasManager : Singleton<CanvasManager>
+public class CanvasManager : MonoBehaviour
 {
    public List<GameObject> canvasElements;
+
+   public void Start()
+   {
+      Toolbox.Instance.AttachCanvasManager(this);
+      DontDestroyOnLoad(this);
+   }
 
    public void Init()
    {
       foreach (GameObject obj in canvasElements)
       {
-         obj.SetActive(true);
+         if (!obj.activeSelf)
+         {
+            obj.SetActive(true);
+         }
       }
-
    }
 }

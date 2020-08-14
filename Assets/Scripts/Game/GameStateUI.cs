@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameStateUI : MonoBehaviour
@@ -10,14 +11,14 @@ public class GameStateUI : MonoBehaviour
    // Update is called once per frame
    private void Update()
    {
-      switch (GameState.Instance.CurrentState)
+      switch (Toolbox.Instance.MiniManager.result)
       {
-         case GameState.State.Lose:
+         case MinigameManager.MinigameState.Lose:
             target.enabled = true;
             target.sprite = lose;
             break;
 
-         case GameState.State.Win:
+         case MinigameManager.MinigameState.Win:
             target.enabled = true;
             target.sprite = win;
             break;

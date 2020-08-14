@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class BushTrimmer : MonoBehaviour
+public class BushTrimmer : BaseMinigame
 {
    public Animator trimmers;
    public SpriteRenderer trimmerRenderer;
@@ -17,11 +17,11 @@ public class BushTrimmer : MonoBehaviour
    private List<GameObject> tracking = new List<GameObject>();
 
    // Start is called before the first frame update
-   private void Start()
+   public override void InitMinigame()
    {
       int tileCount = 0;
 
-      switch (GameVars.Instance.difficulty)
+      switch (Toolbox.Instance.Vars.difficulty)
       {
          case GameVars.Difficulty.Easy:
             bush = easyBushes[Random.Range(0, easyBushes.Count)];
@@ -46,37 +46,45 @@ public class BushTrimmer : MonoBehaviour
       {
          tileIndexes.Add(ix);
       }
+      Active = true;
    }
+   private void Start()
+   {
+      Toolbox.Instance.SetMinigameScript(this);
+   }
+
 
    // Update is called once per frame
    private void Update()
    {
-      if (trimmers.GetBool("Snip"))
+      if (Active)
       {
-         trimmers.ResetTrigger("Snip");
-      }
-
-      if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Z))
-      {
-         if (tileIndexes.Count > 0)
+         if (trimmers.GetBool("Snip"))
          {
-            FlingTile();
+            trimmers.ResetTrigger("Snip");
          }
-      }
 
-      if (tileIndexes.Count == 0)
-      {
-         GameState.Instance.state.SetTrigger("Win");
-         victoryBG.SetTrigger("Display");
-         trimmerRenderer.color = Color.clear;
-      }
-
-      foreach(GameObject obj in tracking)
-      {
-         if ((Mathf.Abs(obj.transform.position.x) >= 6.0f) || (Mathf.Abs(obj.transform.position.y) >= 5.0f))
+         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Z))
          {
-            tracking.Remove(obj);
-            Destroy(obj, 0.1f);
+            if (tileIndexes.Count > 0)
+            {
+               FlingTile();
+            }
+         }
+
+         if (tileIndexes.Count == 0)
+         {
+            victoryBG.SetTrigger("Display");
+            Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.Win;
+            trimmerRenderer.color = Color.clear;
+         }
+
+         for (int ix = 0; ix < tracking.Count; ix++)
+         {
+            if ((Mathf.Abs(tracking[ix].transform.position.x) >= 6.0f) || (Mathf.Abs(tracking[ix].transform.position.y) >= 5.0f))
+            {
+               tracking[ix].gameObject.SetActive(false);
+            }
          }
       }
    }
@@ -86,11 +94,13 @@ public class BushTrimmer : MonoBehaviour
       int index = -1;
       int listIdx = Random.Range(0, tileIndexes.Count);
       index = tileIndexes[listIdx];
-      tileIndexes.RemoveAt(listIdx);
       tileBodies[index].gravityScale = 1.0f;
+      tracking.Add(tileBodies[index].gameObject);
       trimmers.transform.position = tileBodies[index].transform.position;
       trimmers.SetTrigger("Snip");
       tileBodies[index].AddForce(RandomDirection());
+      tileIndexes.RemoveAt(listIdx);
+      tileIndexes.TrimExcess();
    }
 
    private Vector2 RandomDirection()

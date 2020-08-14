@@ -11,36 +11,18 @@ public class PostState : StateMachineBehaviour
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      GameState.Instance.CurrentState = GameState.State.PostMinigame;
-      GameVars.Instance.anim.CloseGameBoard();
-
-      if (GameVars.Instance.scene.isLoaded && GameVars.Instance.scene.IsValid())
-      {
-         SceneManager.UnloadSceneAsync(GameVars.Instance.scene);
-         Resources.UnloadUnusedAssets();
-         GameVars.Instance.nextMinigame = MinigameManager.Instance.miniSceneName[Random.Range(0, MinigameManager.Instance.miniSceneName.Count)];
-         //GameVars.Instance.nextMinigame = GameVars.Instance.sceneList[Random.Range(0, GameVars.Instance.sceneList.Count)];
-      }
+      Toolbox.Instance.CurrentState = GameState.State.PostMinigame;
+      Toolbox.Instance.MiniManager.UnloadCurrentMinigame();
+      Toolbox.Instance.AssetAnim.CloseGameBoard();
+      Toolbox.Instance.MiniManager.timer.Reset();
+      Toolbox.Instance.State.ResetTriggers();
+      Toolbox.Instance.State.SetTrigger(GameState.Trigger.Pregame);
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-   override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-   {
-      if (GameVars.Instance.isGameOver)
-      {
-         GameState.Instance.state.SetTrigger("GameOver");
-      }
-      else if (GameState.Instance.timeInState >= timeToSetStateAtReady)
-      {
-         GameState.Instance.state.SetTrigger("Ready");
-      }
-      else if (GameState.Instance.timeInState >= timeToDisplayNextVerb)
-      {
-         GameVars.Instance.anim.DisplayGameVerb(GameVars.Instance.nextMinigame);
-         GameVars.Instance.anim.OpenGameBoard();
-      }
-
-   }
+   //override public void  OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+   //{
+   //}
 
    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

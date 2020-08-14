@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState : Singleton<GameState>
+public class GameState : MonoBehaviour
 {
    public enum State
    {
@@ -12,74 +10,83 @@ public class GameState : Singleton<GameState>
       Pregame,
       Ready,
       Playing,
-      Win,
-      Lose,
       PostMinigame,
       Gameover,
       Exit,
       Transitioning,
+      Init,
    }
 
-   public bool Initialized { get => initialized; }
-   public State CurrentState
+   public enum Trigger
    {
-      get
-      {
-         if (current != State.Win && state.GetBool("Win"))
-         {
-            return State.Transitioning;
-         }
-         else if (current != State.Lose && state.GetBool("Lose"))
-         {
-            return State.Transitioning;
-         }
-         else return current;
-      }
-      set
-      {
-         prev = current;
-         current = value;
-      }
+      Done,
+      Pregame,
+      Ready,
+      Playing,
+      Post,
+      GameOver,
+      Exit,
+      ToMain,
+      PlayAgain,
+      LevelSelect,
+      Menu,
+      Cutscene,
+      Init,
    }
+
+
+   public bool Initialized { get => _initialized; }
 
    public State PreviousState
    {
       get => prev;
       set => prev = value;
    }
-   public float timeInState;
-   public string triggers;
-   public State miniResult;
-   public Animator state;
 
-   private bool initialized = false;
-   private State current;
-   private State prev;
+   public float timeInState
+   {
+      get => _timeInState;
+   }
+
+   public State current;
+   public State prev;
+
+   public Animator stateAnim;
+
+   private float _timeInState = 0.0f;
+   private bool _initialized = false;
    private List<string> stateTriggers = new List<string>();
 
-   // Start is called before the first frame update
+   public void Start()
+   {
+      Toolbox.Instance.AttachGameState(this);
+   }
+
+   //==========================================================================
    public void Init()
    {
       TrackTriggers();
-      initialized = true;
+      _initialized = true;
    }
 
-   // Update is called once per frame
-   void Update()
+   //==========================================================================
+   public void SetTrigger(Trigger trigger)
    {
-      timeInState += Time.deltaTime;
-      if (PreviousState != CurrentState)
+      stateAnim.SetTrigger(trigger.ToString());
+   }
+
+   //==========================================================================
+   public void ResetTriggers()
+   {
+      foreach (string trig in stateTriggers)
       {
-         timeInState = 0.0f;
-         PreviousState = CurrentState;
+         stateAnim.ResetTrigger(trig);
       }
    }
 
-   void TrackTriggers()
+   //==========================================================================
+   private void TrackTriggers()
    {
-      stateTriggers.Add("Menu");
-      stateTriggers.Add("Win");
-      stateTriggers.Add("Lose");
       stateTriggers.Add("Done");
       stateTriggers.Add("Pregame");
       stateTriggers.Add("Ready");
@@ -90,13 +97,25 @@ public class GameState : Singleton<GameState>
       stateTriggers.Add("ToMain");
       stateTriggers.Add("PlayAgain");
       stateTriggers.Add("LevelSelect");
+      stateTriggers.Add("Menu");
+      stateTriggers.Add("Cutscene");
+      stateTriggers.Add("Init");
    }
 
-   public void ResetTriggers()
+   //==========================================================================
+   private void Update()
    {
-      foreach (String trigger in stateTriggers)
+      if (prev != current)
       {
-         state.ResetTrigger(trigger);
+         _timeInState = 0.0f;
+         prev = current;
       }
+      _timeInState += Time.deltaTime;
+   }
+
+   private void LateUpdate()
+   {
+      var stateinfo = stateAnim.GetCurrentAnimatorStateInfo(0);
+
    }
 }

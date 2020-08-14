@@ -1,13 +1,20 @@
 ﻿using UnityEngine;
 
-public class NoteGame : MonoBehaviour
+public class NoteGame : BaseMinigame
 {
+   public Animator backgroundAnim;
+
    private int notesEntered = 0;
    private int[] notes = new int[4];
    private int Size => (int)Mathf.Sqrt(transform.childCount);
 
    // Start is called before the first frame update
    private void Start()
+   {
+      Toolbox.Instance.SetMinigameScript(this);
+   }
+
+   public override void InitMinigame()
    {
       for (int ix = 0; ix < Size; ix++)
       {
@@ -20,46 +27,50 @@ public class NoteGame : MonoBehaviour
    // Update is called once per frame
    private void Update()
    {
-      int key = -1;
-
-      if (GameState.Instance.CurrentState == GameState.State.Playing)
+      if (Active)
       {
-         if (Input.GetKeyDown(KeyCode.UpArrow))
-         {
-            key = 0;
-            //0
-         }
-         else if (Input.GetKeyDown(KeyCode.DownArrow))
-         {
-            //1
-            key = 1;
-         }
-         else if (Input.GetKeyDown(KeyCode.LeftArrow))
-         {
-            //2
-            key = 2;
-         }
-         else if (Input.GetKeyDown(KeyCode.RightArrow))
-         {
-            //3
-            key = 3;
-         }
-      }
+         int key = -1;
 
-      if (key != -1 && (GameState.Instance.CurrentState == GameState.State.Playing))
-      {
-         if (key != (notes[notesEntered] - notesEntered * Size))
+         if (Toolbox.Instance.CurrentState == GameState.State.Playing)
          {
-            GameState.Instance.state.SetTrigger("Lose");
-         }
-         else
-         {
-            transform.GetChild(key + (notesEntered * Size)).GetComponent<SpriteRenderer>().color = Color.green;
-            notesEntered++;
-
-            if (notesEntered == Size)
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-               GameState.Instance.state.SetTrigger("Win");
+               key = 0;
+               //0
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+               //1
+               key = 1;
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+               //2
+               key = 2;
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+               //3
+               key = 3;
+            }
+         }
+
+         if (key != -1 && (Toolbox.Instance.CurrentState == GameState.State.Playing))
+         {
+            if (key != (notes[notesEntered] - notesEntered * Size))
+            {
+               Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.Lose;
+            }
+            else
+            {
+               transform.GetChild(key + (notesEntered * Size)).GetComponent<SpriteRenderer>().color = Color.green;
+               notesEntered++;
+
+               if (notesEntered == Size)
+               {
+                  Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.Win;
+                  backgroundAnim.SetTrigger("Display");
+               }
             }
          }
       }

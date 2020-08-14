@@ -226,8 +226,8 @@ GameObject:
   - component: {fileID: 165223466}
   - component: {fileID: 165223465}
   m_Layer: 9
-  m_Name: BushTrimmer
-  m_TagString: Untagged
+  m_Name: BushTrimmer_Controller
+  m_TagString: MinigameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -2,7 +2,7 @@
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-public class PregameState : StateMachineBehaviour
+public class InitializeGameState : StateMachineBehaviour
 {
    public int timeToWait = 5;
    public int miniIndex = 0;
@@ -10,12 +10,22 @@ public class PregameState : StateMachineBehaviour
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      Toolbox.Instance.CurrentState = GameState.State.Pregame;
-      Toolbox.Instance.State.ResetTriggers();
-      Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.None;
-      Toolbox.Instance.MiniManager.minigameScene = null;
-      Toolbox.Instance.Canvas.canvasElements[0].SetActive(false);
-      Toolbox.Instance.State.SetTrigger(GameState.Trigger.Ready);
+      Toolbox.Instance.CurrentState = GameState.State.Init;
+
+      if (Toolbox.Instance.Vars.isRestart || Toolbox.Instance.State.PreviousState == GameState.State.Menu)
+      {
+         Toolbox.Instance.State.BroadcastMessage("Awake", SendMessageOptions.RequireReceiver);
+         Toolbox.Instance.State.BroadcastMessage("Start", SendMessageOptions.RequireReceiver);
+         Toolbox.Instance.State.Init();
+         Toolbox.Instance.Canvas.Init();
+         Toolbox.Instance.Vars.Init();
+         Toolbox.Instance.AssetAnim.Init();
+         Toolbox.Instance.AssetAnim.ActivatePreGame();
+         Toolbox.Instance.MiniManager.Init();
+         Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.None;
+      }
+
+      Toolbox.Instance.State.SetTrigger(GameState.Trigger.Pregame);
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

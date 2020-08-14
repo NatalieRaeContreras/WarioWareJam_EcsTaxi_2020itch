@@ -13,6 +13,8 @@ TagManager:
   - CanvasCountdown
   - MinigameBG
   - DestructibleProp
+  - MinigameController
+  - MinigameIndicator
   layers:
   - Default
   - TransparentFX

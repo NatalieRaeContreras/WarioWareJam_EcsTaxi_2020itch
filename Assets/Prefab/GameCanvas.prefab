@@ -225,8 +225,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 161.27747, y: 161.27747}
+  m_AnchoredPosition: {x: -81.51, y: -35.54}
+  m_SizeDelta: {x: 56.981033, y: 56.981033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7193547903979851057
 CanvasRenderer:
@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 7193547904765716325}
   - component: {fileID: 7193547904765716327}
   - component: {fileID: 7193547904765716324}
+  - component: {fileID: 5738413116407137283}
   m_Layer: 8
   m_Name: GameWindow
   m_TagString: CanvasRenderer
@@ -351,6 +352,25 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!95 &5738413116407137283
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193547904765716330}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2df872506ece6f47bb94433c2dcd1e0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7193547904934663747
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +383,6 @@ GameObject:
   - component: {fileID: 7193547904934663772}
   - component: {fileID: 7193547904934663773}
   - component: {fileID: 1541979840}
-  - component: {fileID: 388622988020083321}
   m_Layer: 8
   m_Name: Timer
   m_TagString: CanvasTimer
@@ -417,7 +436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4140592461317279083, guid: 6f102f04c1a67b44e8d76a0716ce207b,
+  m_Sprite: {fileID: 5365527796184999682, guid: 53f8e94d932b51149b7614d426559766,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -447,23 +466,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &388622988020083321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7193547904934663747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08d6f723681d041468eeafc2a69de1ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 0
-  timeLimit: 5
-  timeToDisplayTimer: 3
-  hourglassRenderer: {fileID: 7193547904934663773}
-  countdownRenderer: {fileID: 951376890467819180}
 --- !u!1 &7193547904984658254
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +502,6 @@ RectTransform:
   - {fileID: 951376890467819178}
   - {fileID: 7193547903979851060}
   - {fileID: 7193547903646579476}
-  - {fileID: 8650597549867196775}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -587,51 +588,3 @@ MonoBehaviour:
   - {fileID: 951376890467819177}
   - {fileID: 7193547903979851061}
   - {fileID: 7193547904934663747}
---- !u!1 &7238527184779647861
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8650597549867196775}
-  - component: {fileID: 4742650206362499904}
-  m_Layer: 0
-  m_Name: TimeKeeper
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &8650597549867196775
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7238527184779647861}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.7314, y: -47.797363, z: -1.375}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7193547904984658250}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4742650206362499904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7238527184779647861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08d6f723681d041468eeafc2a69de1ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 0
-  timeLimit: 5
-  timeToDisplayTimer: 3
-  hourglassRenderer: {fileID: 0}
-  countdownRenderer: {fileID: 0}

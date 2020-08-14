@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class MinigameTimer : MonoBehaviour
@@ -20,25 +18,23 @@ public class MinigameTimer : MonoBehaviour
 
    public void Activate()
    {
-      CheckNull();
       active = true;
       timer = 0.0f;
    }
 
    public void Reset()
    {
-      CheckNull();
       Hide();
       countdownAnimator.ResetTrigger("Play");
       hourglassAnimator.ResetTrigger("Play");
       hourglassAnimator.ResetTrigger("Done");
+      countdownAnimator.ResetTrigger("Done");
       active = false;
       timer = 0.0f;
    }
 
    public void Display()
    {
-      CheckNull();
       countdownAnimator.SetTrigger("Play");
       hourglassAnimator.SetTrigger("Play");
       hourglassRenderer.color = Color.white;
@@ -47,36 +43,25 @@ public class MinigameTimer : MonoBehaviour
 
    public void Hide()
    {
-      CheckNull();
       hourglassAnimator.SetTrigger("Done");
       hourglassRenderer.color = Color.clear;
       countdownRenderer.color = Color.clear;
    }
 
-   private void CheckNull()
+   public void Init()
    {
-      if (hourglassRenderer.Equals(null))
-      {
-         hourglassRenderer = GameObject.FindGameObjectWithTag("CanvasTimer").GetComponent<Image>();
-      }
-      if (countdownRenderer.Equals(null))
-      {
-         countdownRenderer = GameObject.FindGameObjectWithTag("CanvasCountdown").GetComponent<Image>();
-      }
-      if (hourglassAnimator.Equals(null))
-      {
-         hourglassAnimator = GameObject.FindGameObjectWithTag("CanvasTimer").GetComponent<Animator>();
-      }
-      if (countdownAnimator.Equals(null))
-      {
-         countdownAnimator = GameObject.FindGameObjectWithTag("CanvasCountdown").GetComponent<Animator>();
-      }
+      hourglassRenderer = Toolbox.Instance.Canvas.canvasElements[4].GetComponent<Image>();
+      hourglassAnimator = Toolbox.Instance.Canvas.canvasElements[4].GetComponent<Animator>();
 
-      if (countdownRenderer.Equals(null) || hourglassRenderer.Equals(null) || hourglassAnimator.Equals(null) || countdownAnimator.Equals(null))
+      countdownRenderer = Toolbox.Instance.Canvas.canvasElements[2].GetComponent<Image>();
+      countdownAnimator = Toolbox.Instance.Canvas.canvasElements[2].GetComponent<Animator>();
+
+      if (countdownRenderer == null || hourglassRenderer == null || hourglassAnimator == null || countdownAnimator == null)
       {
          Debug.LogError("What the hell, mane");
       }
    }
+
 
    // Update is called once per frame
    private void Update()
@@ -84,9 +69,14 @@ public class MinigameTimer : MonoBehaviour
       if (active)
       {
          //advance games state if out of time
-         if (GameState.Instance.CurrentState == GameState.State.Playing && Done)
+         if (Toolbox.Instance.CurrentState == GameState.State.Playing && Done && Toolbox.Instance.MiniManager.result != MinigameManager.MinigameState.Win)
          {
-            GameState.Instance.state.SetTrigger("Lose");
+            Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.Lose;
+         }
+         else if ((Toolbox.Instance.MiniManager.result == MinigameManager.MinigameState.Win ||
+            Toolbox.Instance.MiniManager.result == MinigameManager.MinigameState.Lose) && Done)
+         {
+            Toolbox.Instance.MiniManager.minigameScript.Active = false;
          }
 
          if (timer >= (timeLimit - timeToDisplayTimer) && !Visible)
@@ -101,9 +91,5 @@ public class MinigameTimer : MonoBehaviour
          timer += Time.deltaTime;
       }
 
-      if (GameState.Instance.CurrentState == GameState.State.Win || GameState.Instance.CurrentState == GameState.State.Lose)
-      {
-         Hide();
-      }
    }
 }
