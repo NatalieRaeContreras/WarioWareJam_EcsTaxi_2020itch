@@ -8,12 +8,12 @@ public abstract class BaseMinigame : MonoBehaviour
       set => _active = value;
    }
 
+   private bool _active = false;
+
    public virtual void SetActive(bool value)
    {
       Active = value;
    }
-
-   private bool _active = false;
 
    public abstract void InitMinigame();
 }

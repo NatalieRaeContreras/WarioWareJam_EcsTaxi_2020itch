@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: 7d007b3a4a684e846a6f266d1a587127
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6345557549026889182
+    second: ActionKeys_Depressed_0
+  - first:
+      213: -214294389398513621
+    second: ActionKeys_Depressed_1
+  - first:
+      213: 5863783809934334334
+    second: ActionKeys_Depressed_2
+  - first:
+      213: -3012190888759782370
+    second: ActionKeys_Depressed_3
+  - first:
+      213: -3126861351071881801
+    second: ActionKeys_Depressed_4
+  - first:
+      213: -8536374563716501063
+    second: ActionKeys_Depressed_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -85,7 +103,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ActionKeys_Depressed_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 839
+        width: 556
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2223474870d00f7a0800000000000000
+      internalID: -6345557549026889182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ActionKeys_Depressed_1
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 839
+        width: 555
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b28da82636ca60df0800000000000000
+      internalID: -214294389398513621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ActionKeys_Depressed_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 419
+        width: 556
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7992d6be48506150800000000000000
+      internalID: 5863783809934334334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ActionKeys_Depressed_3
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 419
+        width: 555
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e141ecf885c8236d0800000000000000
+      internalID: -3012190888759782370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ActionKeys_Depressed_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 556
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b566730b282b94d0800000000000000
+      internalID: -3126861351071881801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ActionKeys_Depressed_5
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 0
+        width: 555
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b17ffbdf84b88980800000000000000
+      internalID: -8536374563716501063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

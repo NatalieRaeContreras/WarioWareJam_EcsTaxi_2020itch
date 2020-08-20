@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4920380385340799610}
   - component: {fileID: 5258135803118899674}
   - component: {fileID: 4920380385340799609}
-  - component: {fileID: 4920380385340799608}
   - component: {fileID: 4920380385340799611}
   - component: {fileID: 2279098258703008154}
+  - component: {fileID: 177261236}
+  - component: {fileID: 4315582276035573594}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32923f444ba032e4182cdca68f911ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _state: {fileID: 4920380385340799608}
+  _state: {fileID: 0}
   _miniMan: {fileID: 2279098258703008154}
   _anim: {fileID: 0}
   _canvas: {fileID: 0}
@@ -70,21 +71,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4920380385340799608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4920380385340799590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4868100198bd6b4cab7f77eb790e078, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  current: 0
-  prev: 0
-  stateAnim: {fileID: 4920380385340799609}
 --- !u!114 &4920380385340799611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  darkMode: 0
   timeLimit: 6
   timeToDisplayTimer: 3.2
   hourglassRenderer: {fileID: 0}
@@ -111,13 +98,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4920380385340799590}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0679b76159de6084eadabccb6c641792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minigameScript: {fileID: 0}
-  minigameLoaded: 0
   canvas: {fileID: 0}
   result: 0
   timer: {fileID: 4920380385340799611}
@@ -126,7 +112,51 @@ MonoBehaviour:
   miniSceneName:
   - Scenes/Games/Notegame
   - Scenes/Games/HedgeTrimmer
-  miniMaxTime: 0400000006000000
+  - Scenes/Games/Metronome
+  - Scenes/Games/Basketball
+  - Scenes/Boss/Boss
+  miniMaxTime: 0400000006000000040000000600000002000000
   miniVerb:
-  - {fileID: -4898950237445168155, guid: deb412acc72217f49b163e86779ee80b, type: 3}
-  - {fileID: 21300000, guid: 882b6d5fdcc35744996528d2dcf9317f, type: 3}
+  - {fileID: 21300000, guid: 5eedd5748d72aa448950b375547fab3b, type: 3}
+  - {fileID: 21300000, guid: ad72f1262108aa44cbc08af5fc946d1b, type: 3}
+  - {fileID: 21300000, guid: 8ee6184bd155dcc478cdf27e6980e250, type: 3}
+  - {fileID: 21300000, guid: 3dea4e927f1fca74589a968c677413b4, type: 3}
+  - {fileID: 21300000, guid: f5f69e3e136b20149834a0c0ab273e47, type: 3}
+--- !u!114 &177261236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920380385340799590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0679b76159de6084eadabccb6c641792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minigameScript: {fileID: 0}
+  canvas: {fileID: 0}
+  result: 0
+  timer: {fileID: 4920380385340799611}
+  scene:
+    m_Handle: 0
+  miniSceneName:
+  - Scenes/Boss/Boss
+  miniMaxTime: 02000000
+  miniVerb:
+  - {fileID: 21300000, guid: f5f69e3e136b20149834a0c0ab273e47, type: 3}
+--- !u!114 &4315582276035573594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920380385340799590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e389f13b76ab4b747bb16a4b2d5cf6d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current: 0
+  prev: 0
+  stateAnim: {fileID: 4920380385340799609}

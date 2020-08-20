@@ -14,7 +14,8 @@ public class PregameState : StateMachineBehaviour
       Toolbox.Instance.State.ResetTriggers();
       Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.None;
       Toolbox.Instance.MiniManager.minigameScene = null;
-      Toolbox.Instance.Canvas.canvasElements[0].SetActive(false);
+      //Toolbox.Instance.Canvas.canvasElements[0].SetActive(false);
+      Toolbox.Instance.AssetAnim.HideGameWindow();
       Toolbox.Instance.State.SetTrigger(GameState.Trigger.Ready);
    }
 

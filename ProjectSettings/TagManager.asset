@@ -15,6 +15,9 @@ TagManager:
   - DestructibleProp
   - MinigameController
   - MinigameIndicator
+  - Pawn
+  - Goal
+  - Failure
   layers:
   - Default
   - TransparentFX

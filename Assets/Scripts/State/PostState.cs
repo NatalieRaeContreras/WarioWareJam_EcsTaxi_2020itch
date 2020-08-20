@@ -12,11 +12,9 @@ public class PostState : StateMachineBehaviour
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
       Toolbox.Instance.CurrentState = GameState.State.PostMinigame;
-      Toolbox.Instance.MiniManager.UnloadCurrentMinigame();
       Toolbox.Instance.AssetAnim.CloseGameBoard();
-      Toolbox.Instance.MiniManager.timer.Reset();
+      Toolbox.Instance.AssetAnim.CloseGameWindow();
       Toolbox.Instance.State.ResetTriggers();
-      Toolbox.Instance.State.SetTrigger(GameState.Trigger.Pregame);
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -25,10 +23,10 @@ public class PostState : StateMachineBehaviour
    //}
 
    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-   //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-   //{
-   //
-   //}
+   override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+   {
+      Toolbox.Instance.MiniManager.UnloadCurrentMinigame();
+   }
 
    // OnStateMove is called right after Animator.OnAnimatorMove()
    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

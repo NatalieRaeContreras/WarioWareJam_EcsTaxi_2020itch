@@ -17,4 +17,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Games/HedgeTrimmer.unity
     guid: 36392a077a092f747932a6663d967d2b
+  - enabled: 1
+    path: Assets/Scenes/Games/Metronome.unity
+    guid: ee3a573dc3e62f94fb8a2dbddb7e2bb5
+  - enabled: 1
+    path: Assets/Scenes/Games/Basketball.unity
+    guid: 41bf0eb1773da6445af77a3e8c1f5fd3
+  - enabled: 1
+    path: Assets/Scenes/Boss/Boss.unity
+    guid: 8d9eed37ea4c89a43b52c0ea5226a5bd
+  - enabled: 1
+    path: Assets/Scenes/Boss/AttackIndicator.unity
+    guid: 8e04921d8f5f55b4fb41d83846f6f7cd
+  - enabled: 1
+    path: Assets/Scenes/Boss/BossAttackOne.unity
+    guid: 45d857ca496b8f7479b2727149b3df0d
   m_configObjects: {}

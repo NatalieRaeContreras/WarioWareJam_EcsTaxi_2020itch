@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class NoteGame : BaseMinigame
 {
@@ -7,6 +9,7 @@ public class NoteGame : BaseMinigame
    private int notesEntered = 0;
    private int[] notes = new int[4];
    private int Size => (int)Mathf.Sqrt(transform.childCount);
+
 
    // Start is called before the first frame update
    private void Start()
@@ -36,21 +39,17 @@ public class NoteGame : BaseMinigame
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                key = 0;
-               //0
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-               //1
                key = 1;
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-               //2
                key = 2;
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-               //3
                key = 3;
             }
          }

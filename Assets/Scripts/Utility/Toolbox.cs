@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Toolbox : Singleton<Toolbox>
 {
@@ -29,6 +30,9 @@ public class Toolbox : Singleton<Toolbox>
    public AssetAnimator AssetAnim { get => _anim; set => _anim = value; }
    public CanvasManager Canvas { get => _canvas; set => _canvas = value; }
 
+   public bool ActionKey { get => (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Z) == true); }
+   public TaxiBoss BossScript { get => Toolbox.Instance.MiniManager.minigameScript.gameObject.GetComponent<TaxiBoss>(); }
+
    [SerializeField]
    private GameState _state;
    [SerializeField]
@@ -42,7 +46,20 @@ public class Toolbox : Singleton<Toolbox>
 
    private float timeInState;
 
+   public void SetupFromGameOverToPlayAgain()
+   {
+      Vars = new GameVars();
+      _canvas.canvasElements[1].transform.position = _canvas.defaultTimerPos;
+      _canvas.canvasElements[2].transform.position = _canvas.defaultCountdownPos;
+      _state.SetTrigger(GameState.Trigger.PlayAgain);
+   }
 
+   public void SetupFromGameOverToMainMenu()
+   {
+      SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetActiveScene());
+      SceneManager.MoveGameObjectToScene(_canvas.gameObject, SceneManager.GetActiveScene());
+      _state.SetTrigger(GameState.Trigger.ToMain);
+   }
 
    public void SetMinigameScript(BaseMinigame script)
    {

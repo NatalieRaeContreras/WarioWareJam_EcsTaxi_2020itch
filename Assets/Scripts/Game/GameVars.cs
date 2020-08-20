@@ -14,7 +14,10 @@ public class GameVars
 
    public int health = 3;
    public int loadedScenes = 0;
+   public int minigamesRemaining = 10;
+
    public bool isGameOver = false;
+   public bool isBossDefeated = false;
    public bool isRestart = false;
 
    public Difficulty difficulty = Difficulty.Hard;

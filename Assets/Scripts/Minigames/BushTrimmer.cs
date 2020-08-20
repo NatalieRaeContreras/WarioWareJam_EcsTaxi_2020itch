@@ -76,15 +76,16 @@ public class BushTrimmer : BaseMinigame
          {
             victoryBG.SetTrigger("Display");
             Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.Win;
+            Active = false;
             trimmerRenderer.color = Color.clear;
          }
+      }
 
-         for (int ix = 0; ix < tracking.Count; ix++)
+      for (int ix = 0; ix < tracking.Count; ix++)
+      {
+         if ((Mathf.Abs(tracking[ix].transform.position.x) >= 6.0f) || (Mathf.Abs(tracking[ix].transform.position.y) >= 5.0f))
          {
-            if ((Mathf.Abs(tracking[ix].transform.position.x) >= 6.0f) || (Mathf.Abs(tracking[ix].transform.position.y) >= 5.0f))
-            {
-               tracking[ix].gameObject.SetActive(false);
-            }
+            tracking[ix].gameObject.SetActive(false);
          }
       }
    }

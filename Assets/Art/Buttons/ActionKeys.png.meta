@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: da6695fbd28182e41b3193ee7804be87
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2267278378392745346
+    second: ActionKeys_0
+  - first:
+      213: -390787233467588582
+    second: ActionKeys_1
+  - first:
+      213: 780204007435584516
+    second: ActionKeys_2
+  - first:
+      213: 1525430336521119643
+    second: ActionKeys_3
+  - first:
+      213: -7928188907572409437
+    second: ActionKeys_4
+  - first:
+      213: -2659268374664015481
+    second: ActionKeys_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -85,7 +103,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ActionKeys_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 842
+        width: 556
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a0af0d3520980e0800000000000000
+      internalID: -2267278378392745346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ActionKeys_1
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 842
+        width: 555
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a102866e415a39af0800000000000000
+      internalID: -390787233467588582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ActionKeys_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 429
+        width: 556
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 404c88b3967d3da00800000000000000
+      internalID: 780204007435584516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ActionKeys_3
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 429
+        width: 555
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9722f91fca6b2510800000000000000
+      internalID: 1525430336521119643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ActionKeys_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 556
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab44f3a13a69f190800000000000000
+      internalID: -7928188907572409437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ActionKeys_5
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 0
+        width: 555
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78198bda081681bd0800000000000000
+      internalID: -2659268374664015481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

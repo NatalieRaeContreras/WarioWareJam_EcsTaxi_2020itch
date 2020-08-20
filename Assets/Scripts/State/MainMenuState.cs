@@ -8,6 +8,7 @@ public class MainMenuState : StateMachineBehaviour
    public string targetScene = "Scenes/Story/Taxi";
    public string cutsceneScene = "";
 
+
    bool cutscene = false;
    bool latch = false;
    bool proceed = false;
