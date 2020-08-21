@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,7 @@ public class TaxiBoss : MonoBehaviour
    public Text playerHP;
    public Animator bossStateMachine;
    public Animator subGameRender;
-   public BaseMinigame subGameScript;
+
    public Sprite actionVerb;
 
    public Image advanceText;
@@ -57,6 +58,9 @@ public class TaxiBoss : MonoBehaviour
       Toolbox.Instance.AssetAnim.GameBoard.ResetTrigger("Open");
       Toolbox.Instance.AssetAnim.CloseGameBoard();
       Toolbox.Instance.AssetAnim.CloseGameWindow();
+
+      Toolbox.Instance.Vars.taxiHealth = 1;
+      Toolbox.Instance.Vars.playerHealth = 1;
    }
 
    // Start is called before the first frame update
@@ -201,8 +205,8 @@ public class TaxiBoss : MonoBehaviour
 
    public void UnloadMinigame()
    {
-      Toolbox.Instance.BossScript.subGameScript.Active = false;
-      Toolbox.Instance.BossScript.subGameScript = null;
+      Toolbox.Instance.MiniManager.minigameScript.Active = false;
+      Toolbox.Instance.MiniManager.minigameScript = null;
       Resources.UnloadUnusedAssets();
       Toolbox.Instance.Vars.attackComplete = false;
       Toolbox.Instance.Vars.attackSuccess = false;
