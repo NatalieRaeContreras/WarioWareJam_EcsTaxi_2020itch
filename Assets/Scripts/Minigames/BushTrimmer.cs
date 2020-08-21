@@ -46,13 +46,13 @@ public class BushTrimmer : BaseMinigame
       {
          tileIndexes.Add(ix);
       }
-      Active = true;
+      SetMinigameTimer = 6.0f;
    }
+
    private void Start()
    {
       Toolbox.Instance.SetMinigameScript(this);
    }
-
 
    // Update is called once per frame
    private void Update()

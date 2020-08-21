@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Metronome : BaseMinigame
 {
-
    public List<SpriteRenderer> indicators = new List<SpriteRenderer>();
    public Transform pointer;
    public Animator pointerAnimator;
@@ -36,17 +35,17 @@ public class Metronome : BaseMinigame
             pointerAnimator.speed = 1.5f;
          }
       }
-
+      SetMinigameTimer = 4.0f;
       pointerAnimator.SetTrigger("Play");
    }
 
-   void Start()
+   private void Start()
    {
       Toolbox.Instance.SetMinigameScript(this);
    }
 
    // Update is called once per frame
-   void Update()
+   private void Update()
    {
       if ((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X)))
       {

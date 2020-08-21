@@ -15,17 +15,18 @@ public class Basketball : BaseMinigame
 
    public override void InitMinigame()
    {
+      SetMinigameTimer = 5.0f;
       Toolbox.Instance.MiniManager.timer.SetDarkMode();
    }
 
    // Start is called before the first frame update
-   void Start()
+   private void Start()
    {
       Toolbox.Instance.SetMinigameScript(this);
    }
 
    // Update is called once per frame
-   void Update()
+   private void Update()
    {
       if (Active)
       {

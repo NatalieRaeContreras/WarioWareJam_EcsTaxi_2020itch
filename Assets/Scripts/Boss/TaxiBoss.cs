@@ -56,6 +56,7 @@ public class TaxiBoss : BaseMinigame
       Toolbox.Instance.AssetAnim = bossAssetAnim;
       Toolbox.Instance.BossScript.HideSelectionIndicators();
 
+      SetMinigameTimer = float.PositiveInfinity;
       Active = true;
 
       Toolbox.Instance.AssetAnim.GameBoard.ResetTrigger("Open");
@@ -199,8 +200,6 @@ public class TaxiBoss : BaseMinigame
 
       Toolbox.Instance.MiniManager.timer.Init();
       Toolbox.Instance.MiniManager.timer.killSwitch = false;
-      Toolbox.Instance.MiniManager.timer.timeLimit = 4.0f;
-      Toolbox.Instance.MiniManager.timer.timeToDisplayTimer = 4.0f;
       Toolbox.Instance.MiniManager.timer.darkMode = false;
       Toolbox.Instance.MiniManager.timer.Reset();
    }

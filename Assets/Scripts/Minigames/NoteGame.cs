@@ -10,7 +10,6 @@ public class NoteGame : BaseMinigame
    private int[] notes = new int[4];
    private int Size => (int)Mathf.Sqrt(transform.childCount);
 
-
    // Start is called before the first frame update
    private void Start()
    {
@@ -25,6 +24,7 @@ public class NoteGame : BaseMinigame
          transform.GetChild(val).gameObject.SetActive(true);
          notes[ix] = val;
       }
+      SetMinigameTimer = 3.0f;
    }
 
    // Update is called once per frame

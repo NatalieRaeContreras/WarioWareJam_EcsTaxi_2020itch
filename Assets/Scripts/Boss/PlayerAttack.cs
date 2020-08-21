@@ -44,15 +44,14 @@ public class PlayerAttack : BaseMinigame
       indicator[index].gameObject.SetActive(true);
    }
 
-
    // Start is called before the first frame update
-   void Start()
+   private void Start()
    {
       Toolbox.Instance.BossScript.subGameScript = this;
    }
 
    // Update is called once per frame
-   void Update()
+   private void Update()
    {
       if (Active)
       {
@@ -79,7 +78,7 @@ public class PlayerAttack : BaseMinigame
       int i = Random.Range(0, 3);
       indicator[i].gameObject.SetActive(true);
       DisplayAttackBar(i);
+      SetMinigameTimer = 6.0f;
       Active = true;
-      Toolbox.Instance.Vars.attackComplete = false;
    }
 }
