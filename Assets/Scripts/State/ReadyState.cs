@@ -28,6 +28,7 @@ public class ReadyState : StateMachineBehaviour
       Toolbox.Instance.CurrentState = GameState.State.Ready;
       Toolbox.Instance.MiniManager.timer.Reset();
 
+      once = true;
       prev = Task.none;
       task = Task.none;
 
@@ -54,8 +55,7 @@ public class ReadyState : StateMachineBehaviour
       {
          task = Task.moveToGameOver;
       }
-      //else if (Toolbox.Instance.Vars.minigamesRemaining <= 0)
-      if (once)
+      else if (Toolbox.Instance.Vars.minigamesRemaining <= 0 && once)
       {
          Debug.LogWarning("Holy shit dont forget to fix this");
          Toolbox.Instance.Vars.minigamesRemaining = 0;
@@ -70,6 +70,7 @@ public class ReadyState : StateMachineBehaviour
                task = Task.displayInfo;
             }
             break;
+
          case Task.displayInfo:
             if (Toolbox.Instance.State.timeInState >= 3.0f && Toolbox.Instance.MiniManager.minigameScene.progress >= 0.9f)
             {
@@ -78,6 +79,7 @@ public class ReadyState : StateMachineBehaviour
                task = Task.getSceneFromHierarchy;
             }
             break;
+
          case Task.getSceneFromHierarchy:
             if (Toolbox.Instance.State.timeInState >= 5.0f && Toolbox.Instance.MiniManager.scene.IsValid())
             {
@@ -85,16 +87,19 @@ public class ReadyState : StateMachineBehaviour
                task = Task.initializeScene;
             }
             break;
+
          case Task.initializeScene:
             if (Toolbox.Instance.MiniManager.scene.IsValid())
             {
                Toolbox.Instance.MiniManager.InitScene();
+
                //Toolbox.Instance.Canvas.canvasElements[0].SetActive(true);
                Toolbox.Instance.AssetAnim.ShowGameWindow();
                Toolbox.Instance.AssetAnim.DisplayMinigameWindow();
                task = Task.initializeMinigame;
             }
             break;
+
          case Task.initializeMinigame:
             if (Toolbox.Instance.MiniManager.minigameScript != null)
             {
@@ -102,15 +107,14 @@ public class ReadyState : StateMachineBehaviour
                Toolbox.Instance.State.SetTrigger(GameState.Trigger.Playing);
             }
             break;
+
          case Task.moveToGameOver:
-            //TODO: Gameover
-            Debug.LogWarning("GameOver; todo");
-            SceneManager.LoadScene(0);
+            Toolbox.Instance.State.SetTrigger(GameState.Trigger.GameOver);
             break;
+
          case Task.moveToFinalBoss:
             Toolbox.Instance.State.stateAnim.SetBool("BossFight", true);
             break;
-
       }
 
       timer += Time.deltaTime;

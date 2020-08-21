@@ -14,6 +14,8 @@ public class GameVars
    public bool TaxiDefeated { get => taxiHealth <= 0; }
    public bool PlayerDefeated { get => playerHealth <= 0; }
 
+   public bool GameOver { get => health <= 0; }
+
    public bool introductory = true;
 
    public int playerChoiceBoss = 0;

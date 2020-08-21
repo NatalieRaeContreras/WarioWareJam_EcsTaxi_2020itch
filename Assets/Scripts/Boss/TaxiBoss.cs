@@ -63,9 +63,6 @@ public class TaxiBoss : MonoBehaviour
       Toolbox.Instance.AssetAnim.GameBoard.ResetTrigger("Open");
       Toolbox.Instance.AssetAnim.CloseGameBoard();
       Toolbox.Instance.AssetAnim.CloseGameWindow();
-
-      Toolbox.Instance.Vars.taxiHealth = 1;
-      Toolbox.Instance.Vars.playerHealth = 1;
    }
 
    // Start is called before the first frame update
