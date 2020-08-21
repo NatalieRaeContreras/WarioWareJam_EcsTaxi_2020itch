@@ -31,7 +31,7 @@ public class EnemyAttack : StateMachineBehaviour
       {
          sceneLoaded = true;
          Toolbox.Instance.BossScript.InitScene(Toolbox.Instance.BossScript.taxiAttackScene);
-         Toolbox.Instance.BossScript.subGameScript.InitMinigame();
+         Toolbox.Instance.MiniManager.minigameScript.InitMinigame();
          Toolbox.Instance.AssetAnim.DisplayMinigameWindow();
          Toolbox.Instance.AssetAnim.ShowGameWindow();
       }
@@ -44,7 +44,7 @@ public class EnemyAttack : StateMachineBehaviour
                Toolbox.Instance.AssetAnim.GameBoard.ResetTrigger("Open");
                Toolbox.Instance.AssetAnim.CloseGameBoard();
                Toolbox.Instance.AssetAnim.CloseGameWindow();
-               Toolbox.Instance.BossScript.subGameScript.Active = false;
+               Toolbox.Instance.MiniManager.minigameScript.Active = false;
                once = false;
                done = true;
             }

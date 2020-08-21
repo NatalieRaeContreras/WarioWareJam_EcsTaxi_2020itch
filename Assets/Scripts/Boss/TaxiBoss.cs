@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Data;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,14 +8,17 @@ using UnityEngine.UI;
 
 public class TaxiBoss : MonoBehaviour
 {
+   public Animator fade;
    public Animator NULLANIM;
    public SpriteRenderer NULLSPRITE;
+
+   private bool once = true;
 
    public AssetAnimator bossAssetAnim;
    public Text playerHP;
    public Animator bossStateMachine;
    public Animator subGameRender;
-   public BaseMinigame subGameScript;
+
    public Sprite actionVerb;
 
    public Image advanceText;
@@ -34,9 +39,9 @@ public class TaxiBoss : MonoBehaviour
    public List<Image> choices = new List<Image>();
    public List<Text> lines = new List<Text>();
 
-   private Vector2 countdownLocation = new Vector2(85f, -45f);
-   private Vector2 timerLocation = new Vector2(170f, 30f);
-   private Vector2 winConUILoc = new Vector2(30, -40);
+   private Vector2 countdownLocation = new Vector2(80f, -50f);
+   private Vector2 timerLocation = new Vector2(-400f, -400f);
+   private Vector2 winConUILoc = new Vector2(-60f, -40f);
 
    //public bool boardIsClosed;
    //public bool windowIsClosed;
@@ -47,6 +52,7 @@ public class TaxiBoss : MonoBehaviour
 
    public void Init()
    {
+      once = true;
       Active = true;
       playerHP.text = "" + Toolbox.Instance.Vars.playerHealth;
 
@@ -57,6 +63,9 @@ public class TaxiBoss : MonoBehaviour
       Toolbox.Instance.AssetAnim.GameBoard.ResetTrigger("Open");
       Toolbox.Instance.AssetAnim.CloseGameBoard();
       Toolbox.Instance.AssetAnim.CloseGameWindow();
+
+      Toolbox.Instance.Vars.taxiHealth = 1;
+      Toolbox.Instance.Vars.playerHealth = 1;
    }
 
    // Start is called before the first frame update
@@ -188,10 +197,14 @@ public class TaxiBoss : MonoBehaviour
 
       Destroy(Toolbox.Instance.AssetAnim);
       Toolbox.Instance.AttachAssetAnimator(bossAssetAnim);
+      var mainCanv = Toolbox.Instance.Canvas.GetComponent<Canvas>();
+      mainCanv.renderMode = RenderMode.ScreenSpaceCamera;
+      mainCanv.worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
-      Toolbox.Instance.Canvas.canvasElements[4].transform.position = timerLocation;
-      Toolbox.Instance.Canvas.canvasElements[2].transform.position = countdownLocation;
-      Toolbox.Instance.Canvas.canvasElements[3].transform.position = winConUILoc;
+      Toolbox.Instance.Canvas.canvasElements[2].GetComponent<RectTransform>().anchoredPosition = countdownLocation;
+      Toolbox.Instance.Canvas.canvasElements[4].GetComponent<RectTransform>().anchoredPosition = timerLocation;
+      Toolbox.Instance.Canvas.canvasElements[3].GetComponent<RectTransform>().anchoredPosition = winConUILoc;
+      mainCanv.planeDistance = 0.5f;
 
       Toolbox.Instance.MiniManager.timer.Init();
       Toolbox.Instance.MiniManager.timer.killSwitch = false;
@@ -201,8 +214,8 @@ public class TaxiBoss : MonoBehaviour
 
    public void UnloadMinigame()
    {
-      Toolbox.Instance.BossScript.subGameScript.Active = false;
-      Toolbox.Instance.BossScript.subGameScript = null;
+      Toolbox.Instance.MiniManager.minigameScript.Active = false;
+      Toolbox.Instance.MiniManager.minigameScript = null;
       Resources.UnloadUnusedAssets();
       Toolbox.Instance.Vars.attackComplete = false;
       Toolbox.Instance.Vars.attackSuccess = false;
@@ -213,5 +226,10 @@ public class TaxiBoss : MonoBehaviour
    private void Update()
    {
       playerHP.text = "" + Toolbox.Instance.Vars.playerHealth;
+      if (Toolbox.Instance.Vars.PlayerDefeated && once)
+      {
+         fade.SetTrigger("Go");
+         once = false;
+      }
    }
 }

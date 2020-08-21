@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAttackState : StateMachineBehaviour
 {
-
    public bool sceneLoaded = false;
    public bool once = true;
    public bool winOnce = true;
@@ -52,8 +51,7 @@ public class PlayerAttackState : StateMachineBehaviour
          {
             sceneLoaded = true;
             Toolbox.Instance.BossScript.InitScene(Toolbox.Instance.BossScript.attackScene);
-            Toolbox.Instance.BossScript.subGameScript.InitMinigame();
-
+            Toolbox.Instance.MiniManager.minigameScript.InitMinigame();
          }
          else if ((sceneLoaded && once) &&
                   ((Toolbox.Instance.Vars.attackComplete) ||
@@ -62,7 +60,7 @@ public class PlayerAttackState : StateMachineBehaviour
             Toolbox.Instance.AssetAnim.GameBoard.ResetTrigger("Open");
             Toolbox.Instance.AssetAnim.CloseGameBoard();
             Toolbox.Instance.AssetAnim.CloseGameWindow();
-            Toolbox.Instance.BossScript.subGameScript.Active = false;
+            Toolbox.Instance.MiniManager.minigameScript.Active = false;
             once = false;
             done = true;
 
@@ -79,11 +77,11 @@ public class PlayerAttackState : StateMachineBehaviour
          {
             Toolbox.Instance.AssetAnim.Indicator.SetTrigger("Hit");
             Toolbox.Instance.AssetAnim.WinnerAnim.SetTrigger("Go");
-            //Toolbox.Instance.Vars.
             Toolbox.Instance.Vars.taxiHealth -= 2;
-            Toolbox.Instance.MiniManager.timer.Reset();
-            Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("p_ActionComplete");
          }
+
+         Toolbox.Instance.MiniManager.timer.Reset();
+         Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("p_ActionComplete");
       }
    }
 
