@@ -22,7 +22,7 @@ public abstract class BaseMinigame : MonoBehaviour
 
    private void SetActive(bool value)
    {
-      Active = value;
+      _active = value;
       if (value && _timerSet)
       {
          Toolbox.Instance.MiniManager.timer.Activate();
