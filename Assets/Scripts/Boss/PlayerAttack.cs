@@ -47,7 +47,9 @@ public class PlayerAttack : BaseMinigame
    // Start is called before the first frame update
    private void Start()
    {
-      Toolbox.Instance.BossScript.subGameScript = this;
+      Toolbox.Instance.SetMinigameScript(this);
+
+      //Toolbox.Instance.BossScript.subGameScript = this;
    }
 
    // Update is called once per frame

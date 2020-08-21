@@ -29,7 +29,7 @@ public class BossAttack : BaseMinigame
       begin = false;
       timer = 0.0f;
       timeToGo = Random.Range(1.0f, 3.0f);
-      SetMinigameTimer = (timeToGo + timeAtEnd);
+      SetMinigameTimer = (timeToGo + timeAtEnd + 1.0f);
       Active = true;
       Toolbox.Instance.Vars.attackComplete = false;
    }
@@ -40,7 +40,8 @@ public class BossAttack : BaseMinigame
       {
          playerHit = true;
          collision.gameObject.GetComponent<Animator>().enabled = false;
-         collision.gameObject.GetComponent<Rigidbody2D>().AddForce((Vector2.up + Vector2.right) * 100);
+         collision.gameObject.GetComponent<Rigidbody2D>().AddForce((Vector2.up * 100) + (Vector2.right * 250));
+         Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.Lose;
       }
       else if (collision.gameObject.CompareTag("Goal"))
       {
@@ -51,7 +52,7 @@ public class BossAttack : BaseMinigame
    // Start is called before the first frame update
    private void Start()
    {
-      Toolbox.Instance.BossScript.subGameScript = this;
+      Toolbox.Instance.MiniManager.minigameScript = this;
    }
 
    // Update is called once per frame

@@ -19,10 +19,11 @@ public class TaxiTalking : StateMachineBehaviour
 
       Toolbox.Instance.BossScript.DisplayTextBox();
 
-      if (Toolbox.Instance.Vars.TaxiDefeated)
+      if (Toolbox.Instance.Vars.TaxiDefeated || Toolbox.Instance.Vars.introductory || Toolbox.Instance.Vars.PlayerDefeated)
+      {
          Toolbox.Instance.BossScript._taxiStrings.AdvanceEnemyDialogueState();
+      }
       Toolbox.Instance.BossScript._taxiStrings.FetchEnemyDialogue();
-      if (Toolbox.Instance.Vars.introductory) { Toolbox.Instance.BossScript._taxiStrings.AdvanceEnemyDialogueState(); }
       Toolbox.Instance.BossScript.DisplayTextToRead();
       Toolbox.Instance.BossScript.DisplayTextAdvanceIndication();
 
@@ -35,7 +36,7 @@ public class TaxiTalking : StateMachineBehaviour
    {
       if (textAdvanced && !done)
       {
-         if (Toolbox.Instance.Vars.TaxiDefeated)
+         if (Toolbox.Instance.Vars.TaxiDefeated || Toolbox.Instance.Vars.PlayerDefeated)
          {
             Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("Base_BossFightOver");
          }
@@ -62,5 +63,4 @@ public class TaxiTalking : StateMachineBehaviour
       Toolbox.Instance.BossScript.CloseTextBox();
       Toolbox.Instance.BossScript.HideTextAdvanceIndication();
    }
-
 }
