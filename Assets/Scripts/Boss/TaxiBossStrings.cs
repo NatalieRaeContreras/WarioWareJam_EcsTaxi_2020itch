@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TaxiBossStrings
 {
    public List<Text> lines = new List<Text>();
-
-   public int enemyDialogueState = 0;
 
    public List<string> playerDialogue = new List<string>();
 
@@ -41,6 +40,10 @@ public class TaxiBossStrings
       enemyDialogueWin.Add("this a draw?");
       enemyDialogueWin.Add("");
 
+      enemyDialogueLose.Add("Worry not, this");
+      enemyDialogueLose.Add("was all just a");
+      enemyDialogueLose.Add("bad dream...");
+
       playerDialogue.Add("You try negotiating");
       playerDialogue.Add("...");
       playerDialogue.Add("It's not interested");
@@ -67,7 +70,7 @@ public class TaxiBossStrings
    public void GenerateTaxiLookAt()
    {
       lines[0].text = "The Ecs-Taxi";
-      lines[1].text = "Health: " + Toolbox.Instance.BossScript.taxiHealth;
+      lines[1].text = "Health: " + Toolbox.Instance.Vars.taxiHealth;
       lines[2].text = "Mood: Displeased";
    }
 
@@ -83,23 +86,23 @@ public class TaxiBossStrings
 
    public void AdvanceEnemyDialogueState()
    {
-      if (Toolbox.Instance.BossScript.taxiHealth <= 0)
+      if (Toolbox.Instance.Vars.TaxiDefeated)
       {
-         enemyDialogueState = -1;
+         Toolbox.Instance.Vars.enemyDialogueState = 4;
       }
-      else if (Toolbox.Instance.BossScript.playerHealth <= 0)
+      else if (Toolbox.Instance.Vars.PlayerDefeated)
       {
-         enemyDialogueState = 4;
+         Toolbox.Instance.Vars.enemyDialogueState = -1;
       }
-      else if (enemyDialogueState < 3)
+      else if (Toolbox.Instance.Vars.enemyDialogueState < 3)
       {
-         enemyDialogueState++;
+         Toolbox.Instance.Vars.enemyDialogueState++;
       }
    }
 
    public void FetchEnemyDialogue()
    {
-      switch (enemyDialogueState)
+      switch (Toolbox.Instance.Vars.enemyDialogueState)
       {
          case 0:
             lines[0].text = enemyDialogueIntro[0];

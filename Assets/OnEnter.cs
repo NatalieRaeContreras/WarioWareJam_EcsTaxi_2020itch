@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class OnEnter : StateMachineBehaviour
 {
+   public string trigger = "";
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      animator.ResetTrigger("Hit");
+      animator.ResetTrigger(trigger);
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

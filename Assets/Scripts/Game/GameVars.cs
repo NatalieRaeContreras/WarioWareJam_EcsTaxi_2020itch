@@ -11,6 +11,15 @@ public class GameVars
    }
 
    public bool Initialized { get => _initialized; }
+   public bool TaxiDefeated { get => taxiHealth <= 0; }
+   public bool PlayerDefeated { get => playerHealth <= 0; }
+
+   public bool introductory = true;
+
+   public int playerChoiceBoss = 0;
+   public int enemyDialogueState = 0;
+   public int taxiHealth = 5;
+   public int playerHealth = 20;
 
    public int health = 3;
    public int loadedScenes = 0;
@@ -19,6 +28,11 @@ public class GameVars
    public bool isGameOver = false;
    public bool isBossDefeated = false;
    public bool isRestart = false;
+
+   public bool boardIsClosed;
+   public bool windowIsClosed;
+   public bool attackSuccess = false;
+   public bool attackComplete = false;
 
    public Difficulty difficulty = Difficulty.Hard;
 

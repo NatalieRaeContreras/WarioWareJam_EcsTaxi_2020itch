@@ -5,9 +5,11 @@ public class MinigameTimer : MonoBehaviour
 {
    public bool Done => !active;
    public bool Visible => hourglassRenderer.color == Color.white && countdownRenderer.color == Color.white;
+   public bool TimeOut => timer >= timeLimit;
 
    public bool active = false;
    public bool darkMode = false;
+   public bool killSwitch = true;
    public float timeLimit = 6.0f;
    public float timeToDisplayTimer = 4.0f;
    public UnityEngine.UI.Image hourglassRenderer;
@@ -98,7 +100,7 @@ public class MinigameTimer : MonoBehaviour
               (Toolbox.Instance.MiniManager.result == MinigameManager.MinigameState.Lose)) &&
              Toolbox.Instance.MiniManager.minigameScript.Active)
          {
-            Toolbox.Instance.MiniManager.minigameScript.Active = false;
+            if (killSwitch) { Toolbox.Instance.MiniManager.minigameScript.Active = false; }
             if (!Visible)
             {
                timer = (timeLimit - timeToDisplayTimer) - 0.2f;
@@ -108,7 +110,7 @@ public class MinigameTimer : MonoBehaviour
          {
             Display();
          }
+         timer += Time.deltaTime;
       }
-      timer += Time.deltaTime;
    }
 }

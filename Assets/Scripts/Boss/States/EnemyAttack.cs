@@ -16,7 +16,7 @@ public class EnemyAttack : StateMachineBehaviour
       Toolbox.Instance.AssetAnim.OpenGameBoard();
       Toolbox.Instance.AssetAnim.DisplayMinigameWindow();
       Toolbox.Instance.AssetAnim.ShowGameWindow();
-      Toolbox.Instance.BossScript.attackComplete = false;
+      Toolbox.Instance.Vars.attackComplete = false;
       Toolbox.Instance.BossScript.bossStateMachine.ResetTrigger("Base_toCombat");
 
       sceneLoaded = false;
@@ -37,7 +37,7 @@ public class EnemyAttack : StateMachineBehaviour
       }
       else if (sceneLoaded && !done)
       {
-         if (Toolbox.Instance.BossScript.attackComplete)
+         if (Toolbox.Instance.Vars.attackComplete)
          {
             if (once)
             {
@@ -56,14 +56,14 @@ public class EnemyAttack : StateMachineBehaviour
          if (Toolbox.Instance.BossScript.taxiAttackAsyncOp.progress >= 0.9f &&
              Toolbox.Instance.BossScript.taxiAttackAsyncOp.allowSceneActivation == false)
          {
-            if (!Toolbox.Instance.BossScript.boardIsClosed)
+            if (!Toolbox.Instance.Vars.boardIsClosed)
             {
                Toolbox.Instance.BossScript.taxiAttackAsyncOp.allowSceneActivation = true;
             }
          }
       }
 
-      if (done && Toolbox.Instance.BossScript.boardIsClosed)
+      if (done && Toolbox.Instance.Vars.boardIsClosed)
       {
          Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("Base_toTaxi");
       }

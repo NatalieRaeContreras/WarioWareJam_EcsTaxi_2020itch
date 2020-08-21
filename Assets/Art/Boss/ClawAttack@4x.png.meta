@@ -1,0 +1,347 @@
+fileFormatVersion: 2
+guid: b0a24efca3accd541bffcce10dab46aa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7483174309528356703
+    second: ClawAttack@4x_0
+  - first:
+      213: 3068338154643239682
+    second: ClawAttack@4x_1
+  - first:
+      213: -548282719700915013
+    second: ClawAttack@4x_2
+  - first:
+      213: 1947814880228884432
+    second: ClawAttack@4x_3
+  - first:
+      213: -5036101585500690489
+    second: ClawAttack@4x_4
+  - first:
+      213: -5658324193031964872
+    second: ClawAttack@4x_5
+  - first:
+      213: 8382725643006295708
+    second: ClawAttack@4x_6
+  - first:
+      213: -1361848023388955579
+    second: ClawAttack@4x_7
+  - first:
+      213: 2001655417038577027
+    second: ClawAttack@4x_8
+  - first:
+      213: 2690309275476051039
+    second: ClawAttack@4x_9
+  - first:
+      213: 6092799940830775454
+    second: ClawAttack@4x_10
+  - first:
+      213: -7419113305899380214
+    second: ClawAttack@4x_11
+  - first:
+      213: 6560536601135631823
+    second: ClawAttack@4x_12
+  - first:
+      213: -1308062460301268555
+    second: ClawAttack@4x_13
+  - first:
+      213: -7177448589475186948
+    second: ClawAttack@4x_14
+  - first:
+      213: -9157107670434722801
+    second: ClawAttack@4x_15
+  - first:
+      213: 1763239111835242399
+    second: ClawAttack@4x_16
+  - first:
+      213: 6371429699040632458
+    second: ClawAttack@4x_17
+  - first:
+      213: -2710911249209522948
+    second: ClawAttack@4x_18
+  - first:
+      213: -4333520297421854336
+    second: ClawAttack@4x_19
+  - first:
+      213: 2123803316363592438
+    second: ClawAttack@4x_20
+  - first:
+      213: -7703561577532888819
+    second: ClawAttack@4x_21
+  - first:
+      213: 6398343940116301393
+    second: ClawAttack@4x_22
+  - first:
+      213: -3846614089201762968
+    second: ClawAttack@4x_23
+  - first:
+      213: -8904538908015933446
+    second: ClawAttack@4x_24
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ClawAttack@4x_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 484
+        width: 341.25
+        height: 484
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a8bb30fc9c662890800000000000000
+      internalID: -7483174309528356703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClawAttack@4x_1
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 484
+        width: 341.25
+        height: 484
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 203b94e7b4de49a20800000000000000
+      internalID: 3068338154643239682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClawAttack@4x_2
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 484
+        width: 341.25
+        height: 484
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbcedb775cb1468f0800000000000000
+      internalID: -548282719700915013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClawAttack@4x_3
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 484
+        width: 341.25
+        height: 484
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0df33484057080b10800000000000000
+      internalID: 1947814880228884432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClawAttack@4x_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 341.25
+        height: 484
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c723775a4c2c1ab0800000000000000
+      internalID: -5036101585500690489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClawAttack@4x_5
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 0
+        width: 341
+        height: 484
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 837b45220289971b0800000000000000
+      internalID: -5658324193031964872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClawAttack@4x_6
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 0
+        width: 341.25
+        height: 484
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9eb2f80f8c655470800000000000000
+      internalID: 8382725643006295708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClawAttack@4x_7
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 0
+        width: 341.25
+        height: 484
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c55d7207eb91de0800000000000000
+      internalID: -1361848023388955579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

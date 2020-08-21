@@ -18,7 +18,7 @@ public class PlayerSelectChoice : StateMachineBehaviour
 
       Toolbox.Instance.BossScript.DisplayTextBox();
       Toolbox.Instance.BossScript._taxiStrings.GetPlayerChoices();
-      Toolbox.Instance.BossScript._taxiStrings.CopyTextFromStringTable();
+      //Toolbox.Instance.BossScript._taxiStrings.CopyTextFromStringTable();
       Toolbox.Instance.BossScript.DisplayTextToRead();
       Toolbox.Instance.BossScript.bossStateMachine.ResetTrigger("Base_toPlayer");
 
@@ -27,6 +27,18 @@ public class PlayerSelectChoice : StateMachineBehaviour
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
+      if (selectedOption < 0)
+      {
+         selectedOption = 2;
+      }
+      if (selectedOption > 2)
+      {
+         selectedOption = 0;
+      }
+
+      Toolbox.Instance.BossScript.HideSelectionIndicators();
+      Toolbox.Instance.BossScript.DisplaySelectionIndicators(selectedOption);
+
       if (selecting)
       {
          if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -41,20 +53,8 @@ public class PlayerSelectChoice : StateMachineBehaviour
          {
             selecting = false;
             Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("p_ChoiceMade");
-            Toolbox.Instance.BossScript._playerChoiceMade.choice = selectedOption;
+            Toolbox.Instance.Vars.playerChoiceBoss = selectedOption;
          }
-
-         if (selectedOption < 0)
-         {
-            selectedOption = 2;
-         }
-         if (selectedOption > 2)
-         {
-            selectedOption = 0;
-         }
-
-         Toolbox.Instance.BossScript.HideSelectionIndicators();
-         Toolbox.Instance.BossScript.DisplaySelectionIndicators(selectedOption);
       }
    }
 
@@ -62,7 +62,5 @@ public class PlayerSelectChoice : StateMachineBehaviour
    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
       Toolbox.Instance.BossScript.HideSelectionIndicators();
-      Toolbox.Instance.BossScript.CloseTextBox();
-      Toolbox.Instance.BossScript.HideReadableText();
    }
 }

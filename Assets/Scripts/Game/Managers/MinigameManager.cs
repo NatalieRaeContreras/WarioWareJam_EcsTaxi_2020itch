@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,21 +15,25 @@ public class MinigameManager : MonoBehaviour
 
    //============MinigameVars=============
    public AsyncOperation minigameScene;
+
    public BaseMinigame minigameScript;
    public CanvasManager canvas;
    public MinigameState result;
    public MinigameTimer timer;
    public MinigameInformation minigameInfo;
    public Scene scene;
+
    //=====================================
 
    private bool _initialized = false;
-   private Dictionary<string,MinigameInformation> minigameList = new Dictionary<string,MinigameInformation>();
+   private Dictionary<string, MinigameInformation> minigameList = new Dictionary<string, MinigameInformation>();
 
    [SerializeField]
    private List<string> miniSceneName;
+
    [SerializeField]
    private List<int> miniMaxTime;
+
    [SerializeField]
    private List<Sprite> miniVerb;
 
@@ -49,7 +51,7 @@ public class MinigameManager : MonoBehaviour
    {
       for (int ix = 0; ix < miniSceneName.Count; ix++)
       {
-         minigameList.Add(miniSceneName[ix], new MinigameInformation(miniSceneName[ix], miniMaxTime[ix], miniVerb[ix]));
+         minigameList.Add(miniSceneName[ix], new MinigameInformation(miniSceneName[ix], miniVerb[ix]));
       }
    }
 
@@ -84,7 +86,6 @@ public class MinigameManager : MonoBehaviour
    //==========================================================================
    public void InitScene()
    {
-
       // run awake/start initializations
       foreach (var root in scene.GetRootGameObjects())
       {
@@ -103,14 +104,13 @@ public class MinigameManager : MonoBehaviour
    }
 
    //==========================================================================
-   void Start()
+   private void Start()
    {
       Toolbox.Instance.AttachMinigameManager(this);
 
-      if ((miniSceneName.Count != miniMaxTime.Count) || (   miniSceneName.Count != miniVerb.Count))
+      if (miniSceneName.Count != miniVerb.Count)
       {
-         Debug.LogError("Imbalanced parameter count for " + this.ToString() + " name: " + miniSceneName.Count +
-            " time: " + miniMaxTime.Count + " verb: " + miniVerb.Count);
+         Debug.LogError("Imbalanced parameter count for " + this.ToString() + " name: " + miniSceneName.Count + " verb: " + miniVerb.Count);
       }
 
       foreach (string str in miniSceneName)

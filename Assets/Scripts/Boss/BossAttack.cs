@@ -10,6 +10,8 @@ public class BossAttack : BaseMinigame
    private bool hasJumped;
    private bool sent;
    public bool end;
+   private bool begin = false;
+   private float timer2 = 0.0f;
 
    public Animator player;
    public Animator taxi;
@@ -19,12 +21,15 @@ public class BossAttack : BaseMinigame
 
    public override void InitMinigame()
    {
+      Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.None;
       playerHit = false;
       hasJumped = false;
       sent = false;
-      timeToGo = Random.Range(3.0f, 5.0f);
+      begin = false;
+      timer = 0.0f;
+      timeToGo = Random.Range(1.0f, 3.0f);
       Active = true;
-      Toolbox.Instance.BossScript.attackComplete = false;
+      Toolbox.Instance.Vars.attackComplete = false;
    }
 
    private void OnTriggerEnter2D(Collider2D collision)
@@ -32,6 +37,8 @@ public class BossAttack : BaseMinigame
       if (collision.gameObject.CompareTag("Failure"))
       {
          playerHit = true;
+         collision.gameObject.GetComponent<Animator>().enabled = false;
+         collision.gameObject.GetComponent<Rigidbody2D>().AddForce((Vector2.up + Vector2.right)*100);
       }
       else if (collision.gameObject.CompareTag("Goal"))
       {
@@ -50,7 +57,7 @@ public class BossAttack : BaseMinigame
    {
       if (Active)
       {
-         if (((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X)) || Input.GetKeyDown(KeyCode.UpArrow)) && !hasJumped)
+         if (((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X)) || Input.GetKeyDown(KeyCode.UpArrow)) && !hasJumped && !playerHit)
          {
             hasJumped = true;
             player.SetTrigger("Go");
@@ -62,23 +69,34 @@ public class BossAttack : BaseMinigame
             hazard.SetTrigger("Go");
             taxi.SetTrigger("Go");
          }
-         timer += Time.deltaTime;
 
-         if (end)
+         if (end && !begin)
          {
-            Toolbox.Instance.BossScript.attackComplete = true;
             if (playerHit)
             {
-               Toolbox.Instance.BossScript.attackSuccess = true;
-               Toolbox.Instance.BossScript.playerHealth -= 5;
+               Toolbox.Instance.Vars.attackSuccess = true;
+               Toolbox.Instance.Vars.playerHealth -= 5;
+               Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.Lose;
             }
             else
             {
-               Toolbox.Instance.BossScript.attackSuccess = false;
+               Toolbox.Instance.Vars.attackSuccess = false;
+               Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.Win;
             }
-            Active = false;
+            begin = true;
+         }
+         timer += Time.deltaTime;
+
+         if (begin)
+         {
+            if (timer2 >= 1.0f)
+            {
+               Toolbox.Instance.Vars.attackComplete = true;
+               Active = false;
+               begin = false;
+            }
+            timer2 += Time.deltaTime;
          }
       }
-
    }
 }

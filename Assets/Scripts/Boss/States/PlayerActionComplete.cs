@@ -18,36 +18,35 @@ public class PlayerActionComplete : StateMachineBehaviour
       Toolbox.Instance.BossScript.bossStateMachine.ResetTrigger("p_Look");
       Toolbox.Instance.BossScript.bossStateMachine.ResetTrigger("p_Talk");
 
-      if (Toolbox.Instance.BossScript._playerChoiceMade.choice == 0)
-      {
-         SceneManager.UnloadSceneAsync(Toolbox.Instance.BossScript.attackScene);
-      }
-      Toolbox.Instance.BossScript.attackSceneAsyncOp = null;
-
-      Toolbox.Instance.BossScript.UnloadMinigame();
-
       once = true;
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      if (once)
+      if (Toolbox.Instance.Vars.TaxiDefeated)
       {
-         Toolbox.Instance.BossScript.LoadTaxiAttack();
-         once = false;
+         Toolbox.Instance.BossScript.bossStateMachine.SetBool("Base_toCombat", true);
       }
-
-      if (Toolbox.Instance.BossScript.taxiAttackScene.IsValid())
+      else
       {
-         Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("Base_toCombat");
-      }
-      else if (Toolbox.Instance.BossScript.taxiAttackAsyncOp != null)
-      {
-         if (Toolbox.Instance.BossScript.taxiAttackAsyncOp.progress >= 0.9f &&
-             Toolbox.Instance.BossScript.taxiAttackAsyncOp.allowSceneActivation == false)
+         if (once)
          {
-            Toolbox.Instance.BossScript.taxiAttackAsyncOp.allowSceneActivation = true;
+            Toolbox.Instance.BossScript.LoadTaxiAttack();
+            once = false;
+         }
+
+         if (Toolbox.Instance.BossScript.taxiAttackScene.IsValid())
+         {
+            Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("Base_toCombat");
+         }
+         else if (Toolbox.Instance.BossScript.taxiAttackAsyncOp != null)
+         {
+            if (Toolbox.Instance.BossScript.taxiAttackAsyncOp.progress >= 0.9f &&
+                Toolbox.Instance.BossScript.taxiAttackAsyncOp.allowSceneActivation == false)
+            {
+               Toolbox.Instance.BossScript.taxiAttackAsyncOp.allowSceneActivation = true;
+            }
          }
       }
    }

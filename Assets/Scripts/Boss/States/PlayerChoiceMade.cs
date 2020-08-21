@@ -13,30 +13,29 @@ public class PlayerChoiceMade : StateMachineBehaviour
    {
       choiceLocked = false;
       Toolbox.Instance.BossScript.bossStateMachine.ResetTrigger("p_ActionComplete");
+      choice = Toolbox.Instance.Vars.playerChoiceBoss;
+
+      switch (choice)
+      {
+         case 0:
+            Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("p_Attack");
+            Toolbox.Instance.BossScript.LoadPlayerAttack();
+            break;
+         case 1:
+            Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("p_Look");
+            break;
+         case 2:
+            Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("p_Talk");
+            break;
+         default:
+            Debug.LogError("This really shouldn't have happened");
+            break;
+      }
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      if (!choiceLocked)
-      {
-         choiceLocked = true;
-         switch (choice)
-         {
-            case 0:
-               Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("p_Attack");
-               break;
-            case 1:
-               Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("p_Look");
-               break;
-            case 2:
-               Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("p_Talk");
-               break;
-            default:
-               choiceLocked = false;
-               break;
-         }
-      }
    }
 
    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

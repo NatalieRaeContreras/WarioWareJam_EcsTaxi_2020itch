@@ -11,10 +11,17 @@ public class PostState : StateMachineBehaviour
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      Toolbox.Instance.CurrentState = GameState.State.PostMinigame;
-      Toolbox.Instance.AssetAnim.CloseGameBoard();
-      Toolbox.Instance.AssetAnim.CloseGameWindow();
-      Toolbox.Instance.State.ResetTriggers();
+      if (Toolbox.Instance.Vars.isGameOver)
+      {
+         Toolbox.Instance.CurrentState = GameState.State.Gameover;
+      }
+      else
+      {
+         Toolbox.Instance.CurrentState = GameState.State.PostMinigame;
+         Toolbox.Instance.AssetAnim.CloseGameBoard();
+         Toolbox.Instance.AssetAnim.CloseGameWindow();
+         Toolbox.Instance.State.ResetTriggers();
+      }
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

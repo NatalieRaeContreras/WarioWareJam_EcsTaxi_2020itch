@@ -12,7 +12,7 @@ public class PlayerTalkState : StateMachineBehaviour
    {
       Toolbox.Instance.BossScript.DisplayTextBox();
       Toolbox.Instance.BossScript._taxiStrings.PlayerTalk();
-      Toolbox.Instance.BossScript._taxiStrings.CopyTextFromStringTable();
+      //Toolbox.Instance.BossScript._taxiStrings.CopyTextFromStringTable();
       Toolbox.Instance.BossScript.DisplayTextToRead();
       Toolbox.Instance.BossScript.DisplayTextAdvanceIndication();
 

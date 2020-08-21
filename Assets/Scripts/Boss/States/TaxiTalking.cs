@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,11 +18,11 @@ public class TaxiTalking : StateMachineBehaviour
       Toolbox.Instance.AssetAnim.CloseGameWindow();
 
       Toolbox.Instance.BossScript.DisplayTextBox();
-      Toolbox.Instance.BossScript.LoadPlayerAttack();
 
+      if (Toolbox.Instance.Vars.TaxiDefeated)
+         Toolbox.Instance.BossScript._taxiStrings.AdvanceEnemyDialogueState();
       Toolbox.Instance.BossScript._taxiStrings.FetchEnemyDialogue();
-      Toolbox.Instance.BossScript._taxiStrings.CopyTextFromStringTable();
-      Toolbox.Instance.BossScript._taxiStrings.AdvanceEnemyDialogueState();
+      if (Toolbox.Instance.Vars.introductory) { Toolbox.Instance.BossScript._taxiStrings.AdvanceEnemyDialogueState(); }
       Toolbox.Instance.BossScript.DisplayTextToRead();
       Toolbox.Instance.BossScript.DisplayTextAdvanceIndication();
 
@@ -34,7 +35,15 @@ public class TaxiTalking : StateMachineBehaviour
    {
       if (textAdvanced && !done)
       {
-         Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("Base_toPlayer");
+         if (Toolbox.Instance.Vars.TaxiDefeated)
+         {
+            Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("Base_BossFightOver");
+         }
+         else
+         {
+            Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("Base_toPlayer");
+         }
+
          done = true;
       }
       else if (done)

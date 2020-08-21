@@ -9,12 +9,23 @@ public class PlayerAttack : BaseMinigame
    public Animator attack;
 
    private bool success = false;
+   private bool begin = false;
 
    private void OnTriggerEnter2D(Collider2D collision)
    {
       if (collision.gameObject.CompareTag("Goal") && Active)
       {
          success = true;
+         Debug.Log(success + " enter");
+      }
+   }
+
+   private void OnTriggerStay2D(Collider2D collision)
+   {
+      if (collision.gameObject.CompareTag("Goal") && Active)
+      {
+         success = true;
+         Debug.Log(success + " stay");
       }
    }
 
@@ -23,6 +34,7 @@ public class PlayerAttack : BaseMinigame
       if (collision.gameObject.CompareTag("Goal") && Active)
       {
          success = false;
+         Debug.Log(success + " exit");
       }
    }
 
@@ -32,20 +44,11 @@ public class PlayerAttack : BaseMinigame
       indicator[index].gameObject.SetActive(true);
    }
 
-   public void HideAttackBars()
-   {
-      foreach (Image img in indicator)
-      {
-         img.color = Color.clear;
-         img.gameObject.SetActive(false);
-      }
-   }
 
    // Start is called before the first frame update
    void Start()
    {
       Toolbox.Instance.BossScript.subGameScript = this;
-      HideAttackBars();
    }
 
    // Update is called once per frame
@@ -55,30 +58,28 @@ public class PlayerAttack : BaseMinigame
       {
          if ((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X)))
          {
-            if (success)
-            {
-               Toolbox.Instance.BossScript.attackSuccess = true;
-            }
-            else
-            {
-               Toolbox.Instance.BossScript.attackSuccess = false;
-            }
+            Toolbox.Instance.Vars.attackSuccess = success;
+            begin = true;
+            Toolbox.Instance.MiniManager.result = (success) ? MinigameManager.MinigameState.Win : MinigameManager.MinigameState.Lose;
             Active = false;
-            Toolbox.Instance.BossScript.attackComplete = true;
-            HideAttackBars();
-            attack.gameObject.SetActive(false);
          }
+      }
+      else if (begin)
+      {
+         Toolbox.Instance.Vars.attackComplete = true;
+         begin = false;
       }
    }
 
    public override void InitMinigame()
    {
       success = false;
-      Toolbox.Instance.BossScript.attackComplete = false;
+      begin = false;
+      Toolbox.Instance.Vars.attackComplete = false;
       int i = Random.Range(0, 3);
       indicator[i].gameObject.SetActive(true);
       DisplayAttackBar(i);
       Active = true;
-      Toolbox.Instance.BossScript.attackComplete = false;
+      Toolbox.Instance.Vars.attackComplete = false;
    }
 }

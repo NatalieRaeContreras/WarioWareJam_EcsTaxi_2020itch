@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class TaxiBoss : BaseMinigame
 {
-   public int taxiHealth = 5;
-   public int playerHealth = 20;
-   public bool attackSuccess = false;
-   public bool attackComplete = false;
+   //public int taxiHealth = 5;
+   //public int playerHealth = 20;
+   //public bool attackSuccess = false;
+   //public bool attackComplete = false;
 
    public Animator NULLANIM;
    public SpriteRenderer NULLSPRITE;
@@ -41,15 +41,16 @@ public class TaxiBoss : BaseMinigame
 
    private Vector2 countdownLocation = new Vector2(85f, -45f);
    private Vector2 timerLocation = new Vector2(170f, 30f);
+   private Vector2 winConUILoc = new Vector2(30, -40);
 
-   public bool boardIsClosed;
-   public bool windowIsClosed;
+   //public bool boardIsClosed;
+   //public bool windowIsClosed;
 
    public bool isAwake = false;
 
    public override void InitMinigame()
    {
-      playerHP.text = "" + playerHealth;
+      playerHP.text = "" + Toolbox.Instance.Vars.playerHealth;
 
       SetupAssets();
       Toolbox.Instance.AssetAnim = bossAssetAnim;
@@ -116,7 +117,6 @@ public class TaxiBoss : BaseMinigame
 
    public void InitScene(Scene scene)
    {
-
       // run awake/start initializations
       foreach (var root in scene.GetRootGameObjects())
       {
@@ -176,6 +176,7 @@ public class TaxiBoss : BaseMinigame
       var indicator = bossAssetAnim.Indicator;
       var window = bossAssetAnim.GameWindow;
       var gameBoard = bossAssetAnim.GameBoard;
+      var Winner = bossAssetAnim.WinnerAnim;
 
       bossAssetAnim.Init();
       bossAssetAnim.ActivatePreGame();
@@ -185,16 +186,23 @@ public class TaxiBoss : BaseMinigame
       bossAssetAnim.GameBoard = gameBoard;
 
       bossAssetAnim.LoserAnim = NULLANIM;
-      bossAssetAnim.WinnerAnim = NULLANIM;
+      bossAssetAnim.WinnerAnim = Winner;
       bossAssetAnim.midgroundImage = NULLSPRITE;
+      bossAssetAnim.Indicator = indicator;
 
       Destroy(Toolbox.Instance.AssetAnim);
       Toolbox.Instance.AttachAssetAnimator(bossAssetAnim);
 
-      Toolbox.Instance.AssetAnim.Indicator = indicator;
-
-      Toolbox.Instance.Canvas.canvasElements[1].transform.position = timerLocation;
+      Toolbox.Instance.Canvas.canvasElements[4].transform.position = timerLocation;
       Toolbox.Instance.Canvas.canvasElements[2].transform.position = countdownLocation;
+      Toolbox.Instance.Canvas.canvasElements[3].transform.position = winConUILoc;
+
+      Toolbox.Instance.MiniManager.timer.Init();
+      Toolbox.Instance.MiniManager.timer.killSwitch = false;
+      Toolbox.Instance.MiniManager.timer.timeLimit = 4.0f;
+      Toolbox.Instance.MiniManager.timer.timeToDisplayTimer = 4.0f;
+      Toolbox.Instance.MiniManager.timer.darkMode = false;
+      Toolbox.Instance.MiniManager.timer.Reset();
    }
 
    public void UnloadMinigame()
@@ -202,14 +210,14 @@ public class TaxiBoss : BaseMinigame
       Toolbox.Instance.BossScript.subGameScript.Active = false;
       Toolbox.Instance.BossScript.subGameScript = null;
       Resources.UnloadUnusedAssets();
-      Toolbox.Instance.BossScript.attackComplete = false;
-      Toolbox.Instance.BossScript.attackSuccess = false;
+      Toolbox.Instance.Vars.attackComplete = false;
+      Toolbox.Instance.Vars.attackSuccess = false;
       Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.None;
    }
 
    // Update is called once per frame
    private void Update()
    {
-      playerHP.text = "" + playerHealth;
+      playerHP.text = "" + Toolbox.Instance.Vars.playerHealth;
    }
 }

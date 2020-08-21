@@ -1,65 +1,80 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameOverState : StateMachineBehaviour
 {
    public string mainMenuString = "Scenes/Story/Title";
    public string gameString = "Scenes/Story/Taxi";
    public int choice = 0;
-
-   private AsyncOperation a_zero;
-   private Scene s_zero;
-   private AsyncOperation a_one;
-   private Scene s_one;
+   public bool selecting = true;
+   public bool toMenu = false;
 
    private bool choiceMade = false;
    private bool choiceOperated = false;
+   private GameObject menu;
+   private GameObject replay;
 
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
+      SceneManager.LoadScene("Scenes/Story/GameOver");
+
       Toolbox.Instance.State.ResetTriggers();
-      a_zero = SceneManager.LoadSceneAsync(mainMenuString);
-      a_zero.completed += (operation) =>
-      {
-         s_zero = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
-      };
-      a_zero.allowSceneActivation = false;
 
-      a_one = SceneManager.LoadSceneAsync(gameString);
-      a_one.completed += (operation) =>
-      {
-         s_one = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
-      };
-      a_one.allowSceneActivation = false;
+      bool victory = Toolbox.Instance.Vars.TaxiDefeated;
+      bool defeat = Toolbox.Instance.Vars.PlayerDefeated;
 
+      foreach (var root in SceneManager.GetActiveScene().GetRootGameObjects())
+      {
+         if (root.CompareTag("Victory") && victory)
+         {
+            root.gameObject.SetActive(true);
+         }
+         if (root.CompareTag("Defeat") && defeat)
+         {
+            root.gameObject.SetActive(false);
+         }
+      }
+
+      menu = GameObject.FindGameObjectWithTag("Menu");
+      replay = GameObject.FindGameObjectWithTag("Replay");
+
+      selecting = true;
    }
 
    //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      if (choice < 0)
+      if (selecting)
       {
-         choice = 2;
+         if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow))
+         {
+            toMenu = !toMenu;
+            if (toMenu)
+               choice = 0;
+            else
+               choice = 1;
+         }
+         else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Z))
+         {
+            selecting = false;
+         }
       }
-      if (choice > 2)
-      {
-         choice = 0;
-      }
-
-      if (!choiceOperated)
+      else if (!choiceOperated)
       {
          switch (choice)
          {
             case 0:
                Toolbox.Instance.SetupFromGameOverToMainMenu();
-               a_zero.allowSceneActivation = true;
+               SceneManager.LoadScene(mainMenuString);
                break;
             case 1:
-               a_one.allowSceneActivation = true;
                Toolbox.Instance.SetupFromGameOverToPlayAgain();
+               SceneManager.LoadScene(gameString);
                break;
             default:
                Toolbox.Instance.State.SetTrigger(GameState.Trigger.Exit);
@@ -79,6 +94,20 @@ public class GameOverState : StateMachineBehaviour
             choice--;
             choiceMade = true;
          }
+      }
+
+      menu.GetComponent<Animator>().SetBool("Selected", toMenu);
+      replay.GetComponent<Animator>().SetBool("Selected", !toMenu);
+
+      if (menu.GetComponent<Animator>().GetBool("Selected"))
+      {
+         menu.GetComponentInChildren<Animator>().GetComponentInChildren<Image>().color = Color.white;
+         replay.GetComponentInChildren<Animator>().GetComponentInChildren<Image>().color = Color.clear;
+      }
+      else
+      {
+         menu.GetComponentInChildren<Animator>().GetComponentInChildren<Image>().color = Color.clear;
+         replay.GetComponentInChildren<Animator>().GetComponentInChildren<Image>().color = Color.white;
       }
    }
 

@@ -18,6 +18,8 @@ TagManager:
   - Pawn
   - Goal
   - Failure
+  - Menu
+  - Replay
   layers:
   - Default
   - TransparentFX

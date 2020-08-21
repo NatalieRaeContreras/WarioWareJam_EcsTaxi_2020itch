@@ -10,7 +10,6 @@ public class PlayingState : StateMachineBehaviour
    {
       Toolbox.Instance.CurrentState = GameState.State.Playing;
       Toolbox.Instance.MiniManager.minigameScript.Active = true;
-      Toolbox.Instance.MiniManager.timer.Activate();
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
