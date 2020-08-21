@@ -8,14 +8,28 @@ public abstract class BaseMinigame : MonoBehaviour
       set => SetActive(value);
    }
 
+   public virtual float SetMinigameTimer
+   {
+      set
+      {
+         Toolbox.Instance.MiniManager.timer.timeLimit = value;
+         _timerSet = true;
+      }
+   }
+
+   private bool _timerSet = false;
    private bool _active = false;
 
-   public virtual void SetActive(bool value)
+   private void SetActive(bool value)
    {
       Active = value;
-      if (value)
+      if (value && _timerSet)
       {
          Toolbox.Instance.MiniManager.timer.Activate();
+      }
+      else if (!_timerSet)
+      {
+         Debug.LogError("Minigame time limit not set by BaseMinigame " + this);
       }
    }
 
