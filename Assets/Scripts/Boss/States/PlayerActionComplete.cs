@@ -26,7 +26,7 @@ public class PlayerActionComplete : StateMachineBehaviour
    {
       if (Toolbox.Instance.Vars.TaxiDefeated)
       {
-         Toolbox.Instance.BossScript.bossStateMachine.SetBool("Base_toCombat", true);
+         Toolbox.Instance.BossScript.bossStateMachine.SetBool("Base_BossFightOver", true);
       }
       else
       {

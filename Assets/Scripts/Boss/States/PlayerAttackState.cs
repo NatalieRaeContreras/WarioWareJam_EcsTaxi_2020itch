@@ -77,12 +77,11 @@ public class PlayerAttackState : StateMachineBehaviour
          {
             Toolbox.Instance.AssetAnim.Indicator.SetTrigger("Hit");
             Toolbox.Instance.AssetAnim.WinnerAnim.SetTrigger("Go");
-
-            //Toolbox.Instance.Vars.
             Toolbox.Instance.Vars.taxiHealth -= 2;
-            Toolbox.Instance.MiniManager.timer.Reset();
-            Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("p_ActionComplete");
          }
+
+         Toolbox.Instance.MiniManager.timer.Reset();
+         Toolbox.Instance.BossScript.bossStateMachine.SetTrigger("p_ActionComplete");
       }
    }
 
