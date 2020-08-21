@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InitBoss : StateMachineBehaviour
 {
-   bool once = true;
+   private bool once = true;
 
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -18,7 +18,6 @@ public class InitBoss : StateMachineBehaviour
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-
       if (Toolbox.Instance.BossScript.Active)
       {
          Toolbox.Instance.BossScript.bossStateMachine.SetBool("Base_Initialized", true);
@@ -26,7 +25,7 @@ public class InitBoss : StateMachineBehaviour
       else if (Toolbox.Instance.BossScript.isAwake && once)
       {
          once = false;
-         Toolbox.Instance.BossScript.InitMinigame();
+         Toolbox.Instance.BossScript.Init();
       }
    }
 

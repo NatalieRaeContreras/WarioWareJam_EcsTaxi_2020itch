@@ -4,13 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TaxiBoss : BaseMinigame
+public class TaxiBoss : MonoBehaviour
 {
-   //public int taxiHealth = 5;
-   //public int playerHealth = 20;
-   //public bool attackSuccess = false;
-   //public bool attackComplete = false;
-
    public Animator NULLANIM;
    public SpriteRenderer NULLSPRITE;
 
@@ -48,16 +43,16 @@ public class TaxiBoss : BaseMinigame
 
    public bool isAwake = false;
 
-   public override void InitMinigame()
+   public bool Active { get; set; }
+
+   public void Init()
    {
+      Active = true;
       playerHP.text = "" + Toolbox.Instance.Vars.playerHealth;
 
       SetupAssets();
       Toolbox.Instance.AssetAnim = bossAssetAnim;
       Toolbox.Instance.BossScript.HideSelectionIndicators();
-
-      SetMinigameTimer = float.PositiveInfinity;
-      Active = true;
 
       Toolbox.Instance.AssetAnim.GameBoard.ResetTrigger("Open");
       Toolbox.Instance.AssetAnim.CloseGameBoard();
@@ -67,7 +62,7 @@ public class TaxiBoss : BaseMinigame
    // Start is called before the first frame update
    private void Start()
    {
-      Toolbox.Instance.SetMinigameScript(this);
+      Toolbox.Instance.BossScript = this;
       _playerSelectChoice.choices = this.choices;
       _taxiStrings = new TaxiBossStrings
       {

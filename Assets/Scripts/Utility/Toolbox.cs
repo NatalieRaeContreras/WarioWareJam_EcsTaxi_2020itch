@@ -29,20 +29,26 @@ public class Toolbox : Singleton<Toolbox>
    public MinigameManager MiniManager { get => _miniMan; set => _miniMan = value; }
    public AssetAnimator AssetAnim { get => _anim; set => _anim = value; }
    public CanvasManager Canvas { get => _canvas; set => _canvas = value; }
+   public TaxiBoss BossScript { get => _boss; set => _boss = value; }
 
    public bool ActionKey { get => (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Z) == true); }
-   public TaxiBoss BossScript { get => Toolbox.Instance.MiniManager.minigameScript.gameObject.GetComponent<TaxiBoss>(); }
 
    [SerializeField]
    private GameState _state;
+
    [SerializeField]
    private GameVars _vars;
+
    [SerializeField]
    private MinigameManager _miniMan;
+
    [SerializeField]
    private AssetAnimator _anim;
+
    [SerializeField]
    private CanvasManager _canvas;
+
+   private TaxiBoss _boss;
 
    private float timeInState;
 
