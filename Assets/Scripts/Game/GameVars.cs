@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
 
 public class GameVars
 {
@@ -14,6 +13,8 @@ public class GameVars
    public bool TaxiDefeated { get => taxiHealth <= 0; }
    public bool PlayerDefeated { get => playerHealth <= 0; }
 
+   public bool GameOver { get => health <= 0; }
+
    public bool introductory = true;
 
    public int playerChoiceBoss = 0;
@@ -23,16 +24,20 @@ public class GameVars
 
    public int health = 3;
    public int loadedScenes = 0;
-   public int minigamesRemaining = 10;
+   public int minigamesRemaining = 5;
 
    public bool isGameOver = false;
    public bool isBossDefeated = false;
    public bool isRestart = false;
 
+   public bool endScreenSelection = false;
+
    public bool boardIsClosed;
    public bool windowIsClosed;
    public bool attackSuccess = false;
    public bool attackComplete = false;
+
+   public string lastMiningame = "null";
 
    public Difficulty difficulty = Difficulty.Hard;
 

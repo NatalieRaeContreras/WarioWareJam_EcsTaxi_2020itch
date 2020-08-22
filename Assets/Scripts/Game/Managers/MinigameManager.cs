@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Xml.Schema;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,14 +26,13 @@ public class MinigameManager : MonoBehaviour
 
    //=====================================
 
+   private List<string> minigamesPlayed = new List<string>();
+
    private bool _initialized = false;
    private Dictionary<string, MinigameInformation> minigameList = new Dictionary<string, MinigameInformation>();
 
    [SerializeField]
    private List<string> miniSceneName;
-
-   [SerializeField]
-   private List<int> miniMaxTime;
 
    [SerializeField]
    private List<Sprite> miniVerb;
@@ -60,7 +60,22 @@ public class MinigameManager : MonoBehaviour
    {
       //Additively load the next mini-game scene
       var sceneParameters = new LoadSceneParameters(LoadSceneMode.Additive);
-      string key = miniSceneName[Random.Range(0, miniSceneName.Count)];
+      int idx = 0;
+      string key = "";
+      if (minigamesPlayed.Count == miniSceneName.Count - 1)
+      {
+         minigamesPlayed.Clear();
+      }
+      do
+      {
+         do
+         {
+            idx = Random.Range(0, miniSceneName.Count);
+         }
+         while (idx == 4);
+         key = miniSceneName[idx];
+      } while (HasBeenPlayed(key));
+      minigamesPlayed.Add(key);
       minigameInfo = minigameList[key];
       minigameScene = SceneManager.LoadSceneAsync(minigameInfo.sceneName, sceneParameters);
       minigameScene.completed += (operation) =>
@@ -68,6 +83,19 @@ public class MinigameManager : MonoBehaviour
          scene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
       };
       minigameScene.allowSceneActivation = false;
+   }
+
+   private bool HasBeenPlayed(string key)
+   {
+      bool val = false;
+      foreach (string str in minigamesPlayed)
+      {
+         if (str.Equals(key))
+         {
+            val = true;
+         }
+      }
+      return val;
    }
 
    //==========================================================================

@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using UnityEngine;
-using UnityEngine.Rendering;
+﻿using UnityEngine;
 
 public class BossAttack : BaseMinigame
 {
@@ -29,7 +25,7 @@ public class BossAttack : BaseMinigame
       begin = false;
       timer = 0.0f;
       timeToGo = Random.Range(1.0f, 3.0f);
-      SetMinigameTimer = (timeToGo + timeAtEnd + 1.0f);
+      MinigameTimer = (timeToGo + timeAtEnd + 1.0f);
       Active = true;
       Toolbox.Instance.Vars.attackComplete = false;
    }

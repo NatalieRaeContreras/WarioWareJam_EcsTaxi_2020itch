@@ -18,10 +18,10 @@ public class PlayerSelectChoice : StateMachineBehaviour
 
       Toolbox.Instance.BossScript.DisplayTextBox();
       Toolbox.Instance.BossScript._taxiStrings.GetPlayerChoices();
+
       //Toolbox.Instance.BossScript._taxiStrings.CopyTextFromStringTable();
       Toolbox.Instance.BossScript.DisplayTextToRead();
       Toolbox.Instance.BossScript.bossStateMachine.ResetTrigger("Base_toPlayer");
-
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

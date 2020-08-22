@@ -46,7 +46,7 @@ public class BushTrimmer : BaseMinigame
       {
          tileIndexes.Add(ix);
       }
-      SetMinigameTimer = 6.0f;
+      MinigameTimer = 6.0f;
    }
 
    private void Start()

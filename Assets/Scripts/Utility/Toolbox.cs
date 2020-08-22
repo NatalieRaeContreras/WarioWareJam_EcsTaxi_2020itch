@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Toolbox : Singleton<Toolbox>
 {
@@ -62,8 +61,6 @@ public class Toolbox : Singleton<Toolbox>
 
    public void SetupFromGameOverToMainMenu()
    {
-      SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetActiveScene());
-      SceneManager.MoveGameObjectToScene(_canvas.gameObject, SceneManager.GetActiveScene());
       _state.SetTrigger(GameState.Trigger.ToMain);
    }
 
@@ -133,6 +130,7 @@ public class Toolbox : Singleton<Toolbox>
    {
       Vars = new GameVars();
       DontDestroyOnLoad(this);
+      Application.targetFrameRate = 60;
    }
 
    //==========================================================================

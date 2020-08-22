@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 
 public class Metronome : BaseMinigame
@@ -35,7 +33,7 @@ public class Metronome : BaseMinigame
             pointerAnimator.speed = 1.5f;
          }
       }
-      SetMinigameTimer = 4.0f;
+      MinigameTimer = 4.0f;
       pointerAnimator.SetTrigger("Play");
    }
 

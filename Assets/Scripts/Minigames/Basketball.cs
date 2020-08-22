@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Basketball : BaseMinigame
 {
@@ -15,7 +13,7 @@ public class Basketball : BaseMinigame
 
    public override void InitMinigame()
    {
-      SetMinigameTimer = 5.0f;
+      MinigameTimer = 10.0f;
       Toolbox.Instance.MiniManager.timer.SetDarkMode();
    }
 

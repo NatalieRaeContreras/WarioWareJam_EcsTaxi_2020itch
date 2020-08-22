@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class TaxiTalking : StateMachineBehaviour
 {
@@ -19,11 +15,16 @@ public class TaxiTalking : StateMachineBehaviour
 
       Toolbox.Instance.BossScript.DisplayTextBox();
 
-      if (Toolbox.Instance.Vars.TaxiDefeated || Toolbox.Instance.Vars.introductory || Toolbox.Instance.Vars.PlayerDefeated)
+      if (Toolbox.Instance.Vars.TaxiDefeated || Toolbox.Instance.Vars.PlayerDefeated)
       {
          Toolbox.Instance.BossScript._taxiStrings.AdvanceEnemyDialogueState();
       }
       Toolbox.Instance.BossScript._taxiStrings.FetchEnemyDialogue();
+      if (Toolbox.Instance.Vars.introductory)
+      {
+         Toolbox.Instance.BossScript._taxiStrings.AdvanceEnemyDialogueState();
+         Toolbox.Instance.Vars.introductory = false;
+      }
       Toolbox.Instance.BossScript.DisplayTextToRead();
       Toolbox.Instance.BossScript.DisplayTextAdvanceIndication();
 

@@ -26,6 +26,5 @@ public class CanvasManager : MonoBehaviour
       _gameWinAnim = canvasElements[0].GetComponent<Animator>();
       defaultTimerPos = canvasElements[1].transform.position;
       defaultCountdownPos = canvasElements[2].transform.position;
-
    }
 }

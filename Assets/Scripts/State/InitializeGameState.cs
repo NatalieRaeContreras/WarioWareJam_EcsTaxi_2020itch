@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
 
 public class InitializeGameState : StateMachineBehaviour
 {
@@ -36,7 +34,6 @@ public class InitializeGameState : StateMachineBehaviour
    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    //{
-
    //}
 
    // OnStateMove is called right after Animator.OnAnimatorMove()

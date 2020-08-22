@@ -671,10 +671,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 177261236, guid: e3ddcd7e902244048b0282da2c5bc440, type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 951376890683851511}
     - target: {fileID: 2279098258703008154, guid: e3ddcd7e902244048b0282da2c5bc440,
         type: 3}
       propertyPath: canvas

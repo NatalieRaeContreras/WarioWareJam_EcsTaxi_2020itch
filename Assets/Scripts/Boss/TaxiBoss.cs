@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using UnityEditor.Animations;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -63,9 +60,6 @@ public class TaxiBoss : MonoBehaviour
       Toolbox.Instance.AssetAnim.GameBoard.ResetTrigger("Open");
       Toolbox.Instance.AssetAnim.CloseGameBoard();
       Toolbox.Instance.AssetAnim.CloseGameWindow();
-
-      Toolbox.Instance.Vars.taxiHealth = 1;
-      Toolbox.Instance.Vars.playerHealth = 1;
    }
 
    // Start is called before the first frame update

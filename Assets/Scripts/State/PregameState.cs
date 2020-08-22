@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
 
 public class PregameState : StateMachineBehaviour
 {
@@ -14,6 +12,7 @@ public class PregameState : StateMachineBehaviour
       Toolbox.Instance.State.ResetTriggers();
       Toolbox.Instance.MiniManager.result = MinigameManager.MinigameState.None;
       Toolbox.Instance.MiniManager.minigameScene = null;
+
       //Toolbox.Instance.Canvas.canvasElements[0].SetActive(false);
       Toolbox.Instance.AssetAnim.HideGameWindow();
       Toolbox.Instance.State.SetTrigger(GameState.Trigger.Ready);
@@ -27,7 +26,6 @@ public class PregameState : StateMachineBehaviour
    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    //{
-
    //}
 
    // OnStateMove is called right after Animator.OnAnimatorMove()

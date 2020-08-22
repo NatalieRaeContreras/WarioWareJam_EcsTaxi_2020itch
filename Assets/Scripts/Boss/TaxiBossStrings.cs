@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,10 +21,10 @@ public class TaxiBossStrings
    public void Init()
    {
       enemyDialogueIntro.Add("[Taxi]");
-      enemyDialogueIntro.Add("I always hated drives");
-      enemyDialogueIntro.Add("through the desert...");
+      enemyDialogueIntro.Add("I always hated sand");
+      enemyDialogueIntro.Add("");
 
-      enemyDialogueIntro.Add("[Taxi]");
+      enemyDialogueOne.Add("[Taxi]");
       enemyDialogueOne.Add("Don't scratch the");
       enemyDialogueOne.Add("paint job, bub!");
 
@@ -33,11 +32,11 @@ public class TaxiBossStrings
       enemyDialogueTwo.Add("changes the mix tape");
       enemyDialogueTwo.Add("to the next track)");
 
-      enemyDialogueIntro.Add("[Taxi]");
+      enemyDialogueThree.Add("[Taxi]");
       enemyDialogueThree.Add("Let's not get");
       enemyDialogueThree.Add("too hasty friend-o");
 
-      enemyDialogueIntro.Add("[Taxi]");
+      enemyDialogueWin.Add("[Taxi]");
       enemyDialogueWin.Add("How about we call");
       enemyDialogueWin.Add("this a draw?");
 

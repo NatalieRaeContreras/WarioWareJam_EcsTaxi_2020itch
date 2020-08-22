@@ -7,6 +7,8 @@ public class MinigameTimer : MonoBehaviour
    public bool Visible => hourglassRenderer.color == Color.white && countdownRenderer.color == Color.white;
    public bool TimeOut => timer >= timeLimit;
 
+   public float currentTime => timer;
+
    public bool active = false;
    public bool darkMode = false;
    public bool killSwitch = true;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerLookState : StateMachineBehaviour
 {
@@ -12,6 +10,7 @@ public class PlayerLookState : StateMachineBehaviour
    {
       Toolbox.Instance.BossScript.DisplayTextBox();
       Toolbox.Instance.BossScript._taxiStrings.GenerateTaxiLookAt();
+
       //Toolbox.Instance.BossScript._taxiStrings.CopyTextFromStringTable();
       Toolbox.Instance.BossScript.DisplayTextToRead();
       Toolbox.Instance.BossScript.DisplayTextAdvanceIndication();

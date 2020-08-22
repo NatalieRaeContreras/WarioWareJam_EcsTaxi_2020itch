@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4920380385340799609}
   - component: {fileID: 4920380385340799611}
   - component: {fileID: 2279098258703008154}
-  - component: {fileID: 177261236}
   - component: {fileID: 4315582276035573594}
   m_Layer: 0
   m_Name: GameManager
@@ -85,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   darkMode: 0
+  killSwitch: 1
   timeLimit: 6
   timeToDisplayTimer: 3.2
   hourglassRenderer: {fileID: 0}
@@ -92,37 +92,6 @@ MonoBehaviour:
   countdownRenderer: {fileID: 0}
   countdownAnimator: {fileID: 0}
 --- !u!114 &2279098258703008154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4920380385340799590}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0679b76159de6084eadabccb6c641792, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minigameScript: {fileID: 0}
-  canvas: {fileID: 0}
-  result: 0
-  timer: {fileID: 4920380385340799611}
-  scene:
-    m_Handle: 0
-  miniSceneName:
-  - Scenes/Games/Notegame
-  - Scenes/Games/HedgeTrimmer
-  - Scenes/Games/Metronome
-  - Scenes/Games/Basketball
-  - Scenes/Boss/Boss
-  miniMaxTime: 0400000006000000040000000600000002000000
-  miniVerb:
-  - {fileID: 21300000, guid: 5eedd5748d72aa448950b375547fab3b, type: 3}
-  - {fileID: 21300000, guid: ad72f1262108aa44cbc08af5fc946d1b, type: 3}
-  - {fileID: 21300000, guid: 8ee6184bd155dcc478cdf27e6980e250, type: 3}
-  - {fileID: 21300000, guid: 3dea4e927f1fca74589a968c677413b4, type: 3}
-  - {fileID: 21300000, guid: f5f69e3e136b20149834a0c0ab273e47, type: 3}
---- !u!114 &177261236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,10 +110,21 @@ MonoBehaviour:
   scene:
     m_Handle: 0
   miniSceneName:
+  - Scenes/Games/Notegame
+  - Scenes/Games/HedgeTrimmer
+  - Scenes/Games/Metronome
+  - Scenes/Games/Basketball
   - Scenes/Boss/Boss
-  miniMaxTime: 02000000
+  - Scenes/Games/TireInflation
+  - Scenes/Games/SkiFree
   miniVerb:
+  - {fileID: 21300000, guid: 5eedd5748d72aa448950b375547fab3b, type: 3}
+  - {fileID: 21300000, guid: ad72f1262108aa44cbc08af5fc946d1b, type: 3}
+  - {fileID: 21300000, guid: 8ee6184bd155dcc478cdf27e6980e250, type: 3}
+  - {fileID: 21300000, guid: 3dea4e927f1fca74589a968c677413b4, type: 3}
   - {fileID: 21300000, guid: f5f69e3e136b20149834a0c0ab273e47, type: 3}
+  - {fileID: 21300000, guid: db3e56d54045cf14c832d622c9adb31f, type: 3}
+  - {fileID: 21300000, guid: 6beccd3560abf7e47b8f8c85c3d4430b, type: 3}
 --- !u!114 &4315582276035573594
 MonoBehaviour:
   m_ObjectHideFlags: 0
