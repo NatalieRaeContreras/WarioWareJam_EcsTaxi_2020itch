@@ -4,7 +4,8 @@ using UnityEngine;
 public class SkiFree : BaseMinigame
 {
    public Rigidbody player;
-   private const float force = 20f;
+   private const float force = 100f;
+   private Vector3 dir;
 
    public List<GameObject> list = new List<GameObject>();
    public List<GameObject> list2 = new List<GameObject>();
@@ -51,20 +52,25 @@ public class SkiFree : BaseMinigame
       }
    }
 
+   private void FixedUpdate()
+   {
+      player.AddForce(dir);
+   }
+
    // Update is called once per frame
    private void Update()
    {
       if (Active)
       {
-         player.AddForce(Vector3.forward * Mathf.Sqrt(force));
+         dir = Vector3.forward * Mathf.Sqrt(force);
 
          if (Input.GetKey(KeyCode.LeftArrow))
          {
-            player.AddForce(Vector3.left * force);
+            dir += Vector3.left * force;
          }
          else if (Input.GetKey(KeyCode.RightArrow))
          {
-            player.AddForce(Vector3.right * force);
+            dir += Vector3.right * force;
          }
 
          if (success >= 2)

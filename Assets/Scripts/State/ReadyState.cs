@@ -34,10 +34,14 @@ public class ReadyState : StateMachineBehaviour
       {
          task = Task.moveToGameOver;
       }
-      else
+      else if (Toolbox.Instance.Vars.minigamesRemaining > 0)
       {
          Toolbox.Instance.MiniManager.LoadNextMinigame();
          task = Task.loadMinigame;
+      }
+      else if (Toolbox.Instance.Vars.minigamesRemaining <= 0)
+      {
+         task = Task.moveToFinalBoss;
       }
    }
 
@@ -47,17 +51,6 @@ public class ReadyState : StateMachineBehaviour
       if (prev != task)
       {
          prev = task;
-      }
-
-      if (Toolbox.Instance.Vars.isGameOver)
-      {
-         task = Task.moveToGameOver;
-      }
-      else if (Toolbox.Instance.Vars.minigamesRemaining <= 0 && once)
-      {
-         Debug.LogWarning("Holy shit dont forget to fix this");
-         Toolbox.Instance.Vars.minigamesRemaining = 0;
-         task = Task.moveToFinalBoss;
       }
 
       switch (task)

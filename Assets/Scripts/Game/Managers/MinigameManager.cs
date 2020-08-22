@@ -62,6 +62,10 @@ public class MinigameManager : MonoBehaviour
       var sceneParameters = new LoadSceneParameters(LoadSceneMode.Additive);
       int idx = 0;
       string key = "";
+      if (minigamesPlayed.Count == miniSceneName.Count - 1)
+      {
+         minigamesPlayed.Clear();
+      }
       do
       {
          do

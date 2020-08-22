@@ -35,11 +35,11 @@ public class SideToSide : MonoBehaviour
 
          if (movingLeft)
          {
-            this.transform.position += new Vector3(-0.1f * speed, 0, 0);
+            this.transform.position += new Vector3(-Time.deltaTime * speed, 0, 0);
          }
          else
          {
-            this.transform.position += new Vector3(0.1f * speed, 0, 0);
+            this.transform.position += new Vector3(Time.deltaTime * speed, 0, 0);
          }
       }
    }

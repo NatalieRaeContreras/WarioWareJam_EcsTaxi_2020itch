@@ -13,7 +13,7 @@ public class Basketball : BaseMinigame
 
    public override void InitMinigame()
    {
-      MinigameTimer = 5.0f;
+      MinigameTimer = 10.0f;
       Toolbox.Instance.MiniManager.timer.SetDarkMode();
    }
 
