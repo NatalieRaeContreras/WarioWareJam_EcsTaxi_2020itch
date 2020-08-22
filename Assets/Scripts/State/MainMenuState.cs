@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuState : StateMachineBehaviour
@@ -8,12 +6,11 @@ public class MainMenuState : StateMachineBehaviour
    public string targetScene = "Scenes/Story/Taxi";
    public string cutsceneScene = "";
 
-
-   bool cutscene = false;
-   bool latch = false;
-   bool proceed = false;
-   bool loading = false;
-   AsyncOperation async;
+   private bool cutscene = false;
+   private bool latch = false;
+   private bool proceed = false;
+   private bool loading = false;
+   private AsyncOperation async;
 
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

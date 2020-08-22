@@ -671,60 +671,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 177261236, guid: e3ddcd7e902244048b0282da2c5bc440, type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 951376890683851511}
-    - target: {fileID: 177261236, guid: e3ddcd7e902244048b0282da2c5bc440, type: 3}
-      propertyPath: miniVerb.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: db3e56d54045cf14c832d622c9adb31f,
-        type: 3}
-    - target: {fileID: 177261236, guid: e3ddcd7e902244048b0282da2c5bc440, type: 3}
-      propertyPath: miniSceneName.Array.data[0]
-      value: Scenes/Games/TireInflation
-      objectReference: {fileID: 0}
-    - target: {fileID: 2279098258703008154, guid: e3ddcd7e902244048b0282da2c5bc440,
-        type: 3}
-      propertyPath: miniVerb.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2279098258703008154, guid: e3ddcd7e902244048b0282da2c5bc440,
-        type: 3}
-      propertyPath: miniSceneName.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2279098258703008154, guid: e3ddcd7e902244048b0282da2c5bc440,
-        type: 3}
-      propertyPath: miniMaxTime.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 2279098258703008154, guid: e3ddcd7e902244048b0282da2c5bc440,
         type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 951376890683851511}
-    - target: {fileID: 2279098258703008154, guid: e3ddcd7e902244048b0282da2c5bc440,
-        type: 3}
-      propertyPath: miniMaxTime.Array.data[4]
-      value: 99
-      objectReference: {fileID: 0}
-    - target: {fileID: 2279098258703008154, guid: e3ddcd7e902244048b0282da2c5bc440,
-        type: 3}
-      propertyPath: miniVerb.Array.data[5]
-      value: 
-      objectReference: {fileID: 21300000, guid: db3e56d54045cf14c832d622c9adb31f,
-        type: 3}
-    - target: {fileID: 2279098258703008154, guid: e3ddcd7e902244048b0282da2c5bc440,
-        type: 3}
-      propertyPath: miniSceneName.Array.data[5]
-      value: Scenes/Games/TireInflation
-      objectReference: {fileID: 0}
-    - target: {fileID: 2279098258703008154, guid: e3ddcd7e902244048b0282da2c5bc440,
-        type: 3}
-      propertyPath: miniMaxTime.Array.data[5]
-      value: 99
-      objectReference: {fileID: 0}
     - target: {fileID: 4920380385340799590, guid: e3ddcd7e902244048b0282da2c5bc440,
         type: 3}
       propertyPath: m_Name

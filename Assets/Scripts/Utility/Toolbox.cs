@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Toolbox : Singleton<Toolbox>
 {
@@ -147,19 +146,5 @@ public class Toolbox : Singleton<Toolbox>
       }
 
       timeInState += Time.deltaTime;
-
-      if (Input.GetKeyDown(KeyCode.Delete))
-      {
-         Vars.isGameOver = true;
-      }
-
-      if (Input.GetKeyDown(KeyCode.Alpha1))
-      {
-         Vars.minigamesRemaining = 1;
-      }
-   }
-
-   private void DeleteToGameOver()
-   {
    }
 }

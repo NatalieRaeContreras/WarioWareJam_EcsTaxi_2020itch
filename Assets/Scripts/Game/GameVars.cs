@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
 
 public class GameVars
 {
@@ -25,7 +24,7 @@ public class GameVars
 
    public int health = 3;
    public int loadedScenes = 0;
-   public int minigamesRemaining = 10;
+   public int minigamesRemaining = 5;
 
    public bool isGameOver = false;
    public bool isBossDefeated = false;

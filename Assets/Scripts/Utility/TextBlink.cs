@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
@@ -13,15 +11,13 @@ public class TextBlink : MonoBehaviour
    private bool visible = true;
 
    // Start is called before the first frame update
-   void Start()
+   private void Start()
    {
-
    }
 
    // Update is called once per frame
-   void Update()
+   private void Update()
    {
-
       if (timer >= timeToFlash && visible)
       {
          this.GetComponent<Image>().color = new Color(0, 0, 0, 0);

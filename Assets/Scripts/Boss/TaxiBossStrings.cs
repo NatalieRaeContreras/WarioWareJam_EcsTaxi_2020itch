@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,10 +21,10 @@ public class TaxiBossStrings
    public void Init()
    {
       enemyDialogueIntro.Add("[Taxi]");
-      enemyDialogueIntro.Add("I always hated drives");
-      enemyDialogueIntro.Add("through the desert...");
+      enemyDialogueIntro.Add("I always hated sand");
+      enemyDialogueIntro.Add("");
 
-      enemyDialogueIntro.Add("[Taxi]");
+      enemyDialogueOne.Add("[Taxi]");
       enemyDialogueOne.Add("Don't scratch the");
       enemyDialogueOne.Add("paint job, bub!");
 

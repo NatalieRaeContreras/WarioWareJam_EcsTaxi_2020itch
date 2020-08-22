@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using UnityEditor;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,7 +55,6 @@ public class AssetAnimator : MonoBehaviour
       GameWindow = Toolbox.Instance.Canvas.canvasElements[0].GetComponent<Animator>();
       GameVerb = Toolbox.Instance.Canvas.canvasElements[1].GetComponent<Image>();
       verbAnim = Toolbox.Instance.Canvas.canvasElements[1].GetComponent<Animator>();
-
    }
 
    //==========================================================================
@@ -127,6 +123,7 @@ public class AssetAnimator : MonoBehaviour
       GameBoard.ResetTrigger("Maximize");
       GameBoard.SetTrigger("Close");
    }
+
    //==========================================================================
    public void CloseGameWindow()
    {
