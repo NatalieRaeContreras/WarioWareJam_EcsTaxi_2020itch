@@ -130,6 +130,7 @@ public class Toolbox : Singleton<Toolbox>
    {
       Vars = new GameVars();
       DontDestroyOnLoad(this);
+      Application.targetFrameRate = 60;
    }
 
    //==========================================================================

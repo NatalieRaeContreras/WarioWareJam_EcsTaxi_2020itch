@@ -37,6 +37,8 @@ public class GameVars
    public bool attackSuccess = false;
    public bool attackComplete = false;
 
+   public string lastMiningame = "null";
+
    public Difficulty difficulty = Difficulty.Hard;
 
    private bool _initialized = false;

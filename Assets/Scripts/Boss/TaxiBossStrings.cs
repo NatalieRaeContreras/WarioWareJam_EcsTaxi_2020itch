@@ -32,11 +32,11 @@ public class TaxiBossStrings
       enemyDialogueTwo.Add("changes the mix tape");
       enemyDialogueTwo.Add("to the next track)");
 
-      enemyDialogueIntro.Add("[Taxi]");
+      enemyDialogueThree.Add("[Taxi]");
       enemyDialogueThree.Add("Let's not get");
       enemyDialogueThree.Add("too hasty friend-o");
 
-      enemyDialogueIntro.Add("[Taxi]");
+      enemyDialogueWin.Add("[Taxi]");
       enemyDialogueWin.Add("How about we call");
       enemyDialogueWin.Add("this a draw?");
 
