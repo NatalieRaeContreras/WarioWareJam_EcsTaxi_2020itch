@@ -152,6 +152,11 @@ public class Toolbox : Singleton<Toolbox>
       {
          Vars.isGameOver = true;
       }
+
+      if (Input.GetKeyDown(KeyCode.Alpha1))
+      {
+         Vars.minigamesRemaining = 1;
+      }
    }
 
    private void DeleteToGameOver()
