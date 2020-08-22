@@ -24,7 +24,7 @@ public class NoteGame : BaseMinigame
          transform.GetChild(val).gameObject.SetActive(true);
          notes[ix] = val;
       }
-      SetMinigameTimer = 3.0f;
+      MinigameTimer = 3.0f;
    }
 
    // Update is called once per frame

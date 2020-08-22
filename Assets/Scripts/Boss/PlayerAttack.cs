@@ -80,7 +80,7 @@ public class PlayerAttack : BaseMinigame
       int i = Random.Range(0, 3);
       indicator[i].gameObject.SetActive(true);
       DisplayAttackBar(i);
-      SetMinigameTimer = 6.0f;
+      MinigameTimer = 6.0f;
       Active = true;
    }
 }

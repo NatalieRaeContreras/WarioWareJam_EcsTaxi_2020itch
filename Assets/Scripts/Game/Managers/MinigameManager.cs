@@ -32,9 +32,6 @@ public class MinigameManager : MonoBehaviour
    private List<string> miniSceneName;
 
    [SerializeField]
-   private List<int> miniMaxTime;
-
-   [SerializeField]
    private List<Sprite> miniVerb;
 
    //==========================================================================

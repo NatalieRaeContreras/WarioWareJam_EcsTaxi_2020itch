@@ -35,7 +35,7 @@ public class Metronome : BaseMinigame
             pointerAnimator.speed = 1.5f;
          }
       }
-      SetMinigameTimer = 4.0f;
+      MinigameTimer = 4.0f;
       pointerAnimator.SetTrigger("Play");
    }
 

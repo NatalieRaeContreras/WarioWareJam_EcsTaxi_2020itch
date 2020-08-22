@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Story/GameOver.unity
     guid: 45b9ec75c9276044bb4e016531778de4
+  - enabled: 1
+    path: Assets/Scenes/Games/TireInflation.unity
+    guid: 971a22987efc4fa4f8c985e234f914af
   m_configObjects: {}

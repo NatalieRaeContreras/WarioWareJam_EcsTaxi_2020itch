@@ -8,10 +8,12 @@ public abstract class BaseMinigame : MonoBehaviour
       set => SetActive(value);
    }
 
-   public virtual float SetMinigameTimer
+   public virtual float MinigameTimer
    {
+      get => Toolbox.Instance.MiniManager.timer.currentTime;
       set
       {
+         Toolbox.Instance.MiniManager.timer.Reset();
          Toolbox.Instance.MiniManager.timer.timeLimit = value;
          _timerSet = true;
       }
