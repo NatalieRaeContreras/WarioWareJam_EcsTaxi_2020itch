@@ -31,6 +31,8 @@ public class GameVars
    public bool isBossDefeated = false;
    public bool isRestart = false;
 
+   public bool endScreenSelection = false;
+
    public bool boardIsClosed;
    public bool windowIsClosed;
    public bool attackSuccess = false;

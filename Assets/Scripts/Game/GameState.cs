@@ -34,7 +34,6 @@ public class GameState : MonoBehaviour
       Init,
    }
 
-
    public bool Initialized { get => _initialized; }
 
    public State PreviousState
@@ -116,6 +115,5 @@ public class GameState : MonoBehaviour
    private void LateUpdate()
    {
       var stateinfo = stateAnim.GetCurrentAnimatorStateInfo(0);
-
    }
 }

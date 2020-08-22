@@ -62,8 +62,6 @@ public class Toolbox : Singleton<Toolbox>
 
    public void SetupFromGameOverToMainMenu()
    {
-      SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetActiveScene());
-      SceneManager.MoveGameObjectToScene(_canvas.gameObject, SceneManager.GetActiveScene());
       _state.SetTrigger(GameState.Trigger.ToMain);
    }
 
@@ -149,5 +147,14 @@ public class Toolbox : Singleton<Toolbox>
       }
 
       timeInState += Time.deltaTime;
+
+      if (Input.GetKeyDown(KeyCode.Delete))
+      {
+         Vars.isGameOver = true;
+      }
+   }
+
+   private void DeleteToGameOver()
+   {
    }
 }
